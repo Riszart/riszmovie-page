@@ -1,0 +1,305 @@
+:root{
+  --color-primary: #040404;
+  --color-secundary: #c42832;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica;
+}
+body {
+  width: 100%;
+  background-color: var(--color-primary);
+}
+.nav-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  height: 70px;
+  width: 100vw;
+  background-color: var(--color-primary);
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: solid var(--color-secundary) 1px;
+  z-index: 100;
+}
+.logo {
+  padding-left: 15px;
+  color: var(--color-secundary);
+  font-weight: 800;
+}
+.content-menu {
+  display: block;
+  height: 25px;
+  width: 50px;
+}
+.burger-menu {
+  height: 3px;
+  width: 40px;
+  position: absolute;
+  background-color: var(--color-secundary);
+}
+.burger-menu::after {
+  content: "";
+  height: 3px;
+  width: 40px;
+  position: absolute;
+  top: 10px;
+  background-color: var(--color-secundary);
+}
+.burger-menu::before {
+  content: "";
+  height: 3px;
+  width: 40px;
+  position: absolute;
+  top: 20px;
+  background-color: var(--color-secundary);
+}
+.content-menu__all {
+  display: none;
+  justify-content: space-around;
+  width: 100%;
+  height: auto;
+  background-color: var(--color-primary);
+  position: absolute;
+  padding: 25px 0;
+  top: 70px;
+  left: 0;
+}
+.content-menu__list {
+  display: block;
+  color: var(--color-secundary);
+  list-style: none;
+  font-weight: 700;
+  font-size: large;
+}
+.content-menu__list li {
+  text-transform: capitalize;
+  padding-bottom: 15px;
+}
+.content-menu__list li span{
+  display: inline-block;
+  background-color: aqua;
+  height: 15px;
+  width: 15px;
+}
+
+/*---------- header -------------------*/
+
+header{
+  position: relative;
+  padding-top: 70px;
+  /* padding-bottom: 150px; */
+  height: auto;
+  width: 100%;
+  background-color: var(--color-primary);
+}
+.content-image {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  margin-top: 100px;
+  background-image: url("./img/img-header-back/sm.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.content-image p {
+  font-size: 5px;
+  color: var(--color-secundary);
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
+.content-image p a {
+  color: var(--color-secundary);
+}
+.title-h1{
+  font-size: 16px;
+  position: absolute;
+  color: aliceblue;
+  top: 90px;
+  left: 50px;
+  z-index: 10;
+}
+.title-h1 span{
+  display: block;
+  padding-top: 10px;
+  padding-left: 50px;
+  font-size: 32px;
+  color: var(--color-secundary);
+}
+.search-movie {
+  width: 100%;
+  height: 100px;
+  background-color: var(--color-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.search-movie label {
+  color: aliceblue;
+  text-transform: capitalize;
+}
+.search-movie input {
+  background-color: transparent;
+  border: solid var(--color-secundary) 2px;
+  height: 50px;
+  width: 300px;
+  border-radius: 25px;
+  padding-left: 10px;
+  text-transform: capitalize;
+  font-size: 24px;
+  color: aliceblue;
+}
+/*---------- main -------------------*/
+.list-movie {
+  background-color: var(--color-primary);
+}
+.list-movie h2 {
+  color: var(--color-secundary);
+}
+.content-movie {
+  width: auto;
+  display: flex;
+  gap: 5px;
+  overflow-y: auto;
+}
+.content-movie .item{
+  flex: none;
+  width: 100px;
+  height: 150px;
+  margin-bottom: 15px;
+  margin-top: 5px;
+}
+.item:first-child {
+  margin-left: 10px;
+}
+.item:last-child {
+  margin-right: 10px;
+}
+
+/*---------- div select -------------------*/
+
+.hide-article__select {
+  width: 100%;
+  height: 350px;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+}
+.movie-select__img {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: end;
+}
+.movie-select__img img {
+  position: absolute;
+  transform: translate(0, calc(175px - 50%));
+  right: 0;
+  width: 150px;
+  height: 200px;
+  color: aliceblue;
+  background-color: #c42832;
+
+}
+.movie-detail {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.movie-select-tittle {
+  font-size: 24px;
+  color: var(--color-secundary);
+}
+.movie-select-resumen {
+  color: aliceblue;
+}
+.movie-select-buttom {
+  width: 100px;
+  background-color: var(--color-primary);
+  border: solid var(--color-secundary) 2px;
+  color: aliceblue;
+  padding: 10px 5px;
+}
+.movie-select-buttom:hover {
+  background-color: var(--color-secundary);
+  border-color: var(--color-primary);
+}
+
+/*---------- footer -------------------*/
+
+.content-footer {
+  position: relative;
+  /* background-color: var(--color-primary); */
+  background-image: url(./img/img-footer-back/sm.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 200px;
+  margin-bottom: 15px;
+  border-top: solid var(--color-secundary) 1px;
+}
+.content-footer h3 {
+  padding-top: 15px;
+  margin-left: 15px;
+  color: var(--color-secundary);
+}
+.container-section {
+  height: auto;
+  display: flex;
+  margin-top: 50px;
+  justify-content: space-around;
+}
+.container-section .content-about {
+  color: aliceblue;
+  width: 200px;
+  height: auto;
+  text-transform: capitalize;
+  font-weight: 100;
+  font-size: small;
+}
+.container-section .content-about p {
+  margin-bottom: 10px;
+}
+.container-section .content-red {
+  display: flex;
+  flex-direction: column;
+}
+.footer-end {
+  width: 100%;
+  position: absolute;
+  bottom: -25px;
+  color: var(--color-secundary);
+  text-align: center;
+  text-transform: uppercase;
+}
+.footer-content__image-icon a{
+  position: relative;
+}
+.footer-content__image-icon a img{
+  width: 30px;
+}
+.footer-content__image-icon a span{
+  text-align: center;
+  display: none;
+  min-width: 70px;
+  position: absolute;
+  top: -50px;
+  color: var(--color-primary);
+  text-transform: capitalize;
+  background-color: var(--color-secundary);
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+.footer-content__image-icon a:hover span{
+  display: block;
+}
