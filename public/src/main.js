@@ -1,11 +1,4 @@
-// const listMenu = document.querySelector(".content")
-// const deployMenu = document.querySelector('.deploy-menu').onclick = ()=>{
-//   const valid = listMenu.classList.toggle('showMenu')
-//   valid ?hide() :show()
-// }
-
-// const show = ()=>{listMenu.style.height = "30px"}
-// const hide = ()=>{listMenu.style.height = "auto"}
+const API_KEY = 'd7ea524a59ef60701f4883af10e17628'
 
 const api = axios.create({
   baseURL: 'https://api.themoviedb.org/3/',
