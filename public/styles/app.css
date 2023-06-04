@@ -67,7 +67,7 @@ header {
 main{
   width: 100vw;
   background-attachment: fixed;
-  background-image: url(/public/img/footer.png);
+  background-image: url(/img/footer.png);
   background-position: top;
   background-repeat: no-repeat;
   background-size: contain;
@@ -337,7 +337,7 @@ margin: 50px 0 20px 0;
   justify-content: space-evenly;
   align-items:last baseline;
   text-transform: capitalize;
-  background-image: url(/public//img/img-footer-back/sm.jpg);
+  background-image: url(/img/img-footer-back/sm.jpg);
   background-position: bottom;
   background-repeat: no-repeat;
   background-size: cover;
