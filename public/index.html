@@ -4,93 +4,103 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RiszMovie</title>
-  <link rel="stylesheet" href="./styles/app.css">
-  <link rel="stylesheet" href="./styles/responsive.css">
+  <title>Document</title>
+  <link rel="stylesheet" href="/public/styles/app.css">
 </head>
 <body>
-  <nav class="nav-container">
-    <p class="logo">Risz-Movie</p>
-    <div class="content-menu">
-      <div class="burger-menu"></div>
-      <div class="content-menu__all">
-        <ul class="content-menu__list">
-          <li><span></span> romance</li>
-          <li><span></span> comedia</li>
-          <li><span></span> aventuras</li>
-        </ul>
-        <ul class="content-menu__list">
-          <li><span></span> drama</li>
-          <li><span></span> accion</li>
-          <li><span></span> musical</li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <header>
-    <div class="content-tittle">
-      <h1 class="title-h1">Bienvenido a <span>RiszMovie</span></h1>
-    </div>
-    <div class="content-image">
-      <p>
-        Foto de <a href="https://unsplash.com/@charlesfair?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank">Charles Fair</a>
-      </p>
-    </div>
-    <div class="search-movie">
-      <label for="input-search"></label>
-      <input type="search" class="input-search" placeholder="buscar">
+  <header class="header" >
+    <div class="content-arrow">
+      <img src="/public/img/arrow.svg" alt="">
     </div>
   </header>
   <main>
-    <section class="list-movie">
-      <h2>Tendencias</h2>
-      <div class="content-movie">
-        <article class="item">
-          <img src="./img/linkedin-icon.svg" alt="">
-        </article>
-        <article class="item"></article>
-        <article class="item"></article>
-        <article class="item"></article>
-        <article class="item"></article>
-        <article class="item"></article>
-        <article class="item"></article>
-        <article class="item"></article>
-        <article class="item"></article>
-        <article class="item"></article>
-        <article class="item"></article>
-        <article class="item"></article>
+    <section class="up-container_search">
+      <div class="img-inicio"></div>
+      <h1 class="container-title">risz-movie</h1>
+      <div class="container-search">
+        <input class="search-string" type="text" placeholder="search">
+        <button class="search-button "><img src="/public/img/342301.png" alt=""></button>
       </div>
     </section>
-    <div class="hide-article__select">
-      <section class="movie-select__img">
-        <img src="./img/linkedin-icon.svg" alt="imagen-select">
-      </section>
-      <section class="movie-detail">
-        <h4 class="movie-select-tittle">tittle</h4>
-        <p class="movie-select-resumen">lorem lorem lorem lorem lorem lorem </p>
-        <button class="movie-select-buttom"> ver trailer</button>
-      </section>
-    </div>
-  </main>
-  <footer class="content-footer">
-    <h3>RiszMovie</h3>
-    <div class="container-section">
-      <div class="content-about">
-        <p>desarrollador web</p>
-        <p>riszart daryl</p>
+    <section class="container-trends">
+      <div class="conatiner-trends__title">
+        <h2>Tendencias</h2>
+        <button class="container-trends_button style-button">ver mas</button>
       </div>
-      <div class="content-red">
-        <p>redes</p>
-        <div class="footer-content__image-icon">
-          <a href="https://riszartdaryl.site/" target="_blank"><img src="./img/r.webp" alt="mi web"><span>mi web</span></a>
-          <a href="https://github.com/Riszart" target="_blank"><img src="./img/github-icon.svg" alt="githud"><span>githud</span></a>
-          <a href="https://www.linkedin.com/in/riszart-vergara-cajacuri-71b935214/" target="_blank"><img src="./img/linkedin-icon.svg" alt="linkedin"><span>linkeding</span></a>
+      <div class="over">
+        <div class="container-movies__trends">
+          <!-- <article class="movie"><img src="" alt=""></article> -->
         </div>
       </div>
-    </div>
-    <p class="footer-end">desarrollado por riszart</p>
+    </section>
+    <section class="container-categories">
+      <h2>category</h2>
+      <div class="generate-category display-grid">
+        <!-- <div class="category-item">
+          <span class="color-category"></span>
+          <p class="name-category">sss</p>
+        </div> -->
+      </div>
+    </section>
+    <section class="category-search">
+      <h3 class="title-category_search"></h3>
+      <div class="container-movies-search display-grid">
+        <!-- <article><img src="" alt=""></article> -->
+      </div>
+      <button class="category-search_button style-button ">ver mas</button>
+    </section>
+    <section class="container-movie-select">
+      <div class="image-select">
+      </div>
+      <div class="movie-detail">
+        <div class="container-movie-title">
+          <h3 class="movie-title"></h3>
+          <div>
+            <p class="point"></p>
+            <span>&starf;</span>
+          </div>
+        </div>
+        <div class="container-movie-description">
+          <p class="movie-description"></p>
+        </div>
+        <div class="category-select display-grid">
+          <!-- <div class="category-item">
+              <span class="color-category"></span>
+              <p class="name-category">sss</p>
+            </div> -->
+        </div>
+        <div class="container-list-movie-select">
+          <h4>Peliculas Similares</h4>
+          <div class="movie-select-class">
+            <div class="list-movie">
+              <!-- <article><img src="" alt=""></article> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="list-movie-search">
+      <div class="movie-search_string display-grid">
+        <!-- <article><img src="" alt=""></article> -->
+      </div>
+      <button class="category-search_button style-button ">ver mas</button>
+    </section>
+    <section class="trends">
+      <h3 class="title-trends_search">tendecia</h3>
+      <div class="trends-movies-search display-grid">
+        <!-- <article><img src="" alt=""></article> -->
+      </div>
+      <button class="category-search_button style-button ">ver mas</button>
+    </section>
+  </main>
+  <footer class="content-footer">
+    <p>developed by riszart daryl </p>
+    <a href="https://riszartdaryl.site/" target="_blank">portafolio</a>
   </footer>
-  <script src="./src/secrets.js"></script>
-  <script src="./src/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+  <script src="/public/src/secrets.js"></script>
+  <script src="/public/src/nodes.js"></script>
+  <script src="/public/src/navigation.js"></script>
+  <script src="/public/src/main.js"></script>
 </body>
 </html>
