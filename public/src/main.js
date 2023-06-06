@@ -57,9 +57,9 @@ async function gettrendingPreview(){
     console.log(error)
   }
 }
-async function trnedsMovie(){
-  trendsMovieSearch.innerHTML = ''
-  api.get('trending/movie/day')
+async function trnedsMovie(more, count){
+  if(more == false)trendsMovieSearch.innerHTML = ''
+  api.get(`trending/movie/day`,{params: {page: count}})
     .then((response)=>{
       const dataAxios = response.data
       generateMovie(dataAxios.results,trendsMovieSearch)
@@ -81,9 +81,9 @@ async function getCategories(){
       console.log(error)
     })
 }
-async function getMoviesCategory(id){
-  containerMovieSearch.innerHTML = ''
-  api.get('discover/movie',{params: {with_genres: id}})
+async function getMoviesCategory(id, more, count){
+  if(more == true)containerMovieSearch.innerHTML = ''
+  api.get(`discover/movie`,{params: {with_genres:id,page:count}})
     .then((response)=>{
       const dataAxios = response.data
       generateMovie(dataAxios.results,containerMovieSearch)
@@ -93,9 +93,9 @@ async function getMoviesCategory(id){
     })
 }
 
-async function getMoviesSearch(srting){
-  movieSearchString.innerHTML = ''
-  api.get('search/movie',{params: {query: srting}})
+async function getMoviesSearch(srting, more, count){
+  if(more == true)movieSearchString.innerHTML = ''
+  api.get(`search/movie`,{params: {query: srting,page:count}})
     .then((response)=>{
       const dataAxios = response.data
       generateMovie(dataAxios.results,movieSearchString)

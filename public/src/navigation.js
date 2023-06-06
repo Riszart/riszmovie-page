@@ -1,9 +1,13 @@
+let count
 buttonSearch.addEventListener('click', ()=>{
-  console.log(inputSearch.value)
+  // console.log(inputSearch.value)
+  search()
+})
+function search(){
   if(!inputSearch.value==''){
     location.hash = `#search=${inputSearch.value}`
   }
-})
+}
 arrowBotton.addEventListener('click', ()=>{
   history.back()
   // location.hash = '#home='
@@ -45,6 +49,7 @@ function homePage(){
 }
 
 function categoriesPage(){
+  count = 1
   // console.log('categories')
   header.classList.remove('inactive')
   containerSearch.classList.add('inactive')
@@ -54,11 +59,16 @@ function categoriesPage(){
   containerMovieSelect.classList.add('inactive')
   listMovieSearch.classList.add('inactive')
   categorySearch.classList.remove('inactive')
+  trends.classList.add('inactive')
 
   const [_, categoryData] = location.hash.split('=') 
   const [categoryId, categoryName] = categoryData.split('-')
-  getMoviesCategory(categoryId, categoryName)
-  titleCategorySearch.innerHTML = categoryName
+  getMoviesCategory(categoryId, true, count)
+  titleCategorySearch.innerHTML = categoryName.split('%20').join(' ')
+  categoryButton.onclick = ()=>{
+    count++
+    getMoviesCategory(categoryId, false, count)
+  }
 }
 
 function movieDetailPage(){
@@ -75,12 +85,11 @@ function movieDetailPage(){
   header.classList.remove('inactive')
 
   const [_, movieid] = location.hash.split('=') 
-  console.log(movieid)
   getMovieById(movieid)
-
 }
 
 function searchPage(){
+  count = 1
   // console.log('search')
   header.classList.remove('inactive')
   categorySearch.classList.add('inactive')
@@ -91,14 +100,19 @@ function searchPage(){
   listMovieSearch.classList.remove('inactive')
   trends.classList.add('inactive')
   containerFooter.classList.remove('inactive')
-
+  
   //['#search','string']
   const [_, query] = location.hash.split('=') 
-  getMoviesSearch(query)
+  getMoviesSearch(query,true, count)
+  buttonSeeMoreSearch.onclick = ()=>{
+    count++
+    getMoviesSearch(query ,false , count)
+  }
 }
 
 function trendsPage(){
-  console.log('trends')
+  count = 1
+  // console.log('trends')
   containerSearch.classList.add('inactive')
   containerTrends.classList.add('inactive')
   containerCategories.classList.add('inactive')
@@ -107,7 +121,11 @@ function trendsPage(){
   containerMovieSelect.classList.add('inactive')
   categorySearch.classList.add('inactive')
   listMovieSearch.classList.add('inactive')
-  trnedsMovie()
+  trnedsMovie(false, count)
+  buttonSeeMoreTrends.onclick = ()=>{
+    count++
+    trnedsMovie(true, count)
+  }
 }
 // div3.addEventListener("click",event => {
 //   event.stopPropagation()
@@ -115,3 +133,10 @@ function trendsPage(){
 
 // const Cr = (elemento) => document.createElement(elemento);
 // const parrafo = Cr('p');
+
+document.body.addEventListener("keydown", event=>{
+  if(event.code === "Escape")history.back()
+})
+document.body.addEventListener("keydown", event=>{
+  if(event.code === "Enter")search()
+})
