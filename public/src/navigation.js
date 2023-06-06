@@ -33,6 +33,8 @@ function navigator(){
 
 function homePage(){
   // console.log('home')
+  containerSubtitle.classList.remove('inactive')
+  contentInicio.style.height = '240px'
   title.classList.remove('inactive')
   containerSearch.classList.remove('inactive')
   header.classList.add('inactive')
@@ -91,6 +93,8 @@ function movieDetailPage(){
 function searchPage(){
   count = 1
   // console.log('search')
+  containerSubtitle.classList.add('inactive')
+  contentInicio.style.height = '50px'
   header.classList.remove('inactive')
   categorySearch.classList.add('inactive')
   title.classList.add('inactive')
