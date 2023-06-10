@@ -9,19 +9,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RiszMovie - Conoce las peliculas en tendencia</title>
   <meta name="description" content="Conoce las peliculas de extreno o tendencias diarias - navege y disfrute de la aplicaion - disponivble para mobiles">
-  <link rel="stylesheet" href="https://riszart.github.io/riszmovie-page/public/styles/app.css">
+  <link rel="stylesheet" href="../public/styles/app.css">
   <link rel="shortcut icon" href="https://riszart.github.io/riszmovie-page/public/img/icon-movie.webp">
 </head>
 <body>
   <header class="header" >
-    <div class="content-arrow">
-      <img src="https://riszart.github.io/riszmovie-page/public/img/arrow.svg" alt="">
+    <div class="header-top">
+      <div class="content-arrow">
+        <img class="content-arrow__img" src="..//public/img/arrow.svg" alt="">
+      </div>
+      <h1 class="container-title">riszmovie!...</h1>
     </div>
+    <canvas class="header-bottom"></canvas>
   </header>
   <main>
     <section class="up-container_search">
       <div class="img-inicio"></div>
-      <h1 class="container-title">riszmovie!...</h1>
       <p class="container-subtitle">Millones de películas para descubrir. Animate y conoce las tendencias, los estrenos y mas</p>
       <div class="container-search">
         <input class="search-string" type="text" placeholder="search">
@@ -35,6 +38,10 @@
       </div>
       <div class="over">
         <div class="container-movies__trends">
+          <article class="movie-load-show"></article>
+          <article class="movie-load-show"></article>
+          <article class="movie-load-show"></article>
+          <article class="movie-load-show"></article>
           <!-- <article class="movie"><img src="" alt=""></article> -->
         </div>
       </div>
@@ -42,6 +49,10 @@
     <section class="container-categories">
       <h2>category</h2>
       <div class="generate-category display-grid">
+        <div class="category-load"></div>
+        <div class="category-load"></div>
+        <div class="category-load"></div>
+        <div class="category-load"></div>
         <!-- <div class="category-item">
           <span class="color-category"></span>
           <p class="name-category">sss</p>
@@ -49,27 +60,38 @@
       </div>
     </section>
     <section class="category-search">
-      <h3 class="title-category_search"></h3>
+      <!-- <h3 class="title-category_search"></h3> -->
       <div class="container-movies-search display-grid">
         <!-- <article><img src="" alt=""></article> -->
+        <article class="movie-load-show"></article>
+        <article class="movie-load-show"></article>
+        <article class="movie-load-show"></article>
+        <article class="movie-load-show"></article>
       </div>
-      <button class="category_button style-button ">ver mas</button>
     </section>
     <section class="container-movie-select">
-      <div class="image-select">
+      <div class="container-img-movie">
+        <img class="image-select" src="" alt="">
       </div>
       <div class="movie-detail">
         <div class="container-movie-title">
           <h3 class="movie-title"></h3>
+          <div class="title-load"></div>
           <div>
             <p class="point"></p>
-            <span>&starf;</span>
+            <!-- <span>&starf;</span> -->
           </div>
+          <div class="start-load"></div>
         </div>
         <div class="container-movie-description">
           <p class="movie-description"></p>
+          <div class="description-load"></div>
         </div>
         <div class="category-select display-grid">
+          <div class="category-load"></div>
+          <div class="category-load"></div>
+          <div class="category-load"></div>
+          <div class="category-load"></div>
           <!-- <div class="category-item">
               <span class="color-category"></span>
               <p class="name-category">sss</p>
@@ -80,6 +102,10 @@
           <div class="movie-select-class">
             <div class="list-movie">
               <!-- <article><img src="" alt=""></article> -->
+              <article class="movie-load-show"></article>
+              <article class="movie-load-show"></article>
+              <article class="movie-load-show"></article>
+              <article class="movie-load-show"></article>
             </div>
           </div>
         </div>
@@ -88,25 +114,59 @@
     <section class="list-movie-search">
       <div class="movie-search_string display-grid">
         <!-- <article><img src="" alt=""></article> -->
+          <article class="movie-load-show"></article>
+          <article class="movie-load-show"></article>
+          <article class="movie-load-show"></article>
+          <article class="movie-load-show"></article>
       </div>
-      <button class="category-search_button style-button ">ver mas</button>
     </section>
     <section class="trends">
-      <h3 class="title-trends_search">tendecia</h3>
+      <!-- <h3 class="title-trends_search">tendecia</h3> -->
       <div class="trends-movies-search display-grid">
         <!-- <article><img src="" alt=""></article> -->
+          <article class="movie-load-show"></article>
+          <article class="movie-load-show"></article>
+          <article class="movie-load-show"></article>
+          <article class="movie-load-show"></article>
       </div>
-      <button class="movie-trends_button style-button ">ver mas</button>
     </section>
   </main>
   <footer class="content-footer">
     <p>developed by riszart daryl </p>
     <a href="https://riszartdaryl.site/" target="_blank">portafolio</a>
   </footer>
+  <script>
+    const canvas = document.querySelector(".header-bottom")
+    const ctx = canvas.getContext('2d')
+    canvas.width = window.innerWidth
+    canvas.height = 40
+
+    ctx.beginPath()
+    ctx.strokeStyle = "#001369";
+    ctx.fillStyle="#001369";
+    ctx.lineWidth = .1;
+    ctx.moveTo(40,0)
+    ctx.lineTo(0,0)
+    ctx.lineTo(0,40)
+    ctx.arc(40,40,40,(Math.PI / 180)*180,(Math.PI / 180)*-90,false)
+    ctx.fill()
+    ctx.stroke();
+  
+    ctx.translate(canvas.width - 40, 0);
+    ctx.beginPath()
+    ctx.moveTo(0,0)
+    ctx.lineTo(40, 0)
+    ctx.lineTo(40, 40)
+    ctx.arc(0,40,40,0,(Math.PI / 180)*-90,true)
+    ctx.fill()
+    ctx.stroke();
+
+
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
   <!-- <script src="https://riszart.github.io/riszmovie-page/public/src/secrets.js"></script> -->
-  <script src="https://riszart.github.io/riszmovie-page/public/src/nodes.js"></script>
-  <script src="https://riszart.github.io/riszmovie-page/public/src/navigation.js"></script>
-  <script src="https://riszart.github.io/riszmovie-page/public/src/main.js"></script>
+  <script src="../public/src/nodes.js"></script>
+  <script src="../public/src/navigation.js"></script>
+  <script src="../public/src/main.js"></script>
 </body>
 </html>
