@@ -1,15 +1,17 @@
 :root{
   --color-primary: #000;
-  --color-third: #85862a;
+  --color-third: #9223237a;
   --color-back: #b4cefd;
-  --color-background: #001369;
+  --color-background: #6c7bc0;
+  --box-shodow: inset 0px 0px 10px 2px black;
 }
 *::-webkit-scrollbar {
   height: 10px;               /* width of the entire scrollbar */
+  width: 10px;               /* width of the entire scrollbar */
 }
 
 *::-webkit-scrollbar-track {
-  background: transparent;        /* color of the tracking area */
+  background: white;        /* color of the tracking area */
 }
 
 *::-webkit-scrollbar-thumb {
@@ -80,6 +82,7 @@
 }
 .movie img {
   width: 100%;
+  height: 100%;
 }
 .style-button {
   background-color: var(--color-back);
@@ -89,6 +92,12 @@
   font-weight: bold;
   text-transform: uppercase;
   cursor: pointer;
+}
+.style-button:focus {
+  background-color: var(--color-third);
+}
+.style-button:hover {
+  box-shadow: var(--box-shodow);
 }
 .display-grid {
   display: grid;
@@ -202,6 +211,9 @@ main{
 .search-button:focus {
   background-color: var(--color-third);
 }
+.search-button:hover {
+  box-shadow: var(--box-shodow);
+}
 .search-button img {
   width: 50%;
 }
@@ -211,10 +223,6 @@ main{
   margin: 0 25px;
   width: calc(100% - 50px);
   min-height: 350px;
-}
-
-.button-see-more:hover {
-  border: solid black 2px;
 }
 .conatiner-trends__title{
   display: flex;
@@ -272,6 +280,7 @@ main{
   display: flex;
   align-items: center;
 }
+
 .color-category {
   width: 25px;
   height: 25px;
@@ -288,9 +297,7 @@ main{
   cursor: pointer;
 }
 .name-category:hover {
-  background-color: rgb(255, 254, 254);
-}
-.name-category:active {
+  background-color: var(--color-third);
 }
                                   /* category search*/
 /* .title-category_search{
@@ -465,12 +472,15 @@ main{
 .content-footer p{
   font-size: 14px;
   font-weight: 600;
-  color: var(--color-back);
+  color: var(--color-primary);
 }
 .content-footer a{
-  font-size: 14px;
+  font-size: 13px;
   font-weight: bold;
   color: var(--color-back);
+}
+.content-footer a:hover{
+  color: var(--color-primary);
 }
 
 #id28 { background-color: rgb(255, 0, 106);}
@@ -509,7 +519,7 @@ main{
   width: calc(100% - 30px) !important;
   height: 100%;
   padding: 15px;
-  color: red;
+  color: rgb(0, 0, 0);
   background-color: var(--color-background);
 }
 @keyframes load-item {

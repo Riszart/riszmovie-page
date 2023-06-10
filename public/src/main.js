@@ -192,7 +192,7 @@ async function getMovieById(movie_id){
         imageSelect.classList.add('error')
         imageSelect.setAttribute('alt', `Imagen de -(- ${movie.data.title} -)- NO DISPONIBLE..!!!`)
       })
-      categoryMovie(movie.data.genres, categorySelect)
+      categoryMovie(movie.data.genres,categorySelect)
       getRelateMovieId(movie_id)
     })
     .catch(error=>{
@@ -206,7 +206,7 @@ async function getRelateMovieId(movie_id){
     console.log(movie)
     generateMovie(
       movieData,
-      listMovieSelect,
+      window.innerWidth < 970?listMovieSelect:containerListMovieSelectDesktop,
       {
         clean:true,
         azyLoad:true

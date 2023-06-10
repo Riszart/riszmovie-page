@@ -61,6 +61,8 @@ function homePage(){
   containerCategories.classList.remove('inactive')
   trends.classList.add('inactive')
   containerFooter.classList.remove('inactive')
+  mainMovie.classList.remove('change-movie-select')
+  containerListMovieSelectDesktop.classList.add('inactive')
 
   gettrendingPreview() 
   getCategories()
@@ -78,6 +80,8 @@ function categoriesPage(){
   listMovieSearch.classList.add('inactive')
   categorySearch.classList.remove('inactive')
   trends.classList.add('inactive')
+  mainMovie.classList.remove('change-movie-select')
+
 
   const [_, categoryData] = location.hash.split('=') 
   const [categoryId, categoryName] = categoryData.split('-')
@@ -110,9 +114,20 @@ function movieDetailPage(){
   containerMovieSelect.classList.remove('inactive')
   trends.classList.add('inactive')
   header.classList.remove('inactive')
+  
 
   const [_, movieid] = location.hash.split('=') 
+  containerListMovieSelectDesktop.classList.add('inactive')
+
+  if(window.innerWidth > 970){
+    mainMovie.classList.add('change-movie-select')
+  containerListMovieSelectDesktop.classList.remove('inactive')
+
+  }
+
   getMovieById(movieid)
+
+  listMovieSelect
 }
 
 function searchPage(){
@@ -130,6 +145,7 @@ function searchPage(){
   listMovieSearch.classList.remove('inactive')
   trends.classList.add('inactive')
   containerFooter.classList.remove('inactive')
+  mainMovie.classList.remove('change-movie-select')
   //['#search','string']
   const [_, queryHash] = location.hash.split('=') 
   responseApi({
@@ -159,6 +175,8 @@ function trendsPage(){
   containerMovieSelect.classList.add('inactive')
   categorySearch.classList.add('inactive')
   listMovieSearch.classList.add('inactive')
+  mainMovie.classList.remove('change-movie-select')
+
   responseApi({
     apiUrl:'trending/movie/day',
     container:trendsMovieSearch,

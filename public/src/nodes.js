@@ -35,6 +35,10 @@ const categoryButton = select('.category_button')
 const contentInicio = select('.img-inicio')
 const containerSubtitle = select('.container-subtitle')
 
+const mainMovie = select('main')
+const containerListMovieSelectDesktop = select('.container-list-movie-select_desktop')
+
+
 // header
 
 const contentArrowImg = select('.content-arrow__img')
