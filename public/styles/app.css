@@ -9,11 +9,9 @@
   height: 10px;               /* width of the entire scrollbar */
   width: 10px;               /* width of the entire scrollbar */
 }
-
 *::-webkit-scrollbar-track {
   background: white;        /* color of the tracking area */
 }
-
 *::-webkit-scrollbar-thumb {
   background-color: #58585863;    /* color of the scroll thumb */
   border-radius: 5px;       /* roundness of the scroll thumb */
@@ -105,13 +103,11 @@
   gap: 15px;
 }
 body {
-  background-color: var(--color-background);
+  background-color:var(--color-background);
   user-select: none;
 }
 .header{
   width: 100vw;
-  height: auto;
-  display: block;
   position: fixed;
   z-index: 1000;
 }
@@ -375,16 +371,6 @@ main{
   font-weight: 900;
   color: var(--color-background);
 }
-.container-movie-title div {
-  /* display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center; */
-}
-/* .container-movie-title div span {
-  display: block;
-  color: yellow;
-} */
 .point {
   font-weight: bold;
 }
@@ -398,6 +384,15 @@ main{
   font-size: 16px;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 500;
+}
+.movie-video_play {
+  height: 250px;
+  width: 90vw;
+  margin-left: 20px;
+}
+.movie-video_play iframe{
+  width: 100%;
+  height: 100%;
 }
 .category-select {
   width: calc(100% - 50px);

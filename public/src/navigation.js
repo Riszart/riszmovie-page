@@ -12,6 +12,7 @@ function search(){
   }
 }
 contentArrowImg.addEventListener('click', ()=>{
+  movieVideoPlay.innerHTML = ""
   history.back()
   // location.hash = '#home='
 })
@@ -82,9 +83,10 @@ function categoriesPage(){
   trends.classList.add('inactive')
   mainMovie.classList.remove('change-movie-select')
 
-
   const [_, categoryData] = location.hash.split('=') 
-  const [categoryId, categoryName] = categoryData.split('-')
+  const [categoryId, categoryNameEncoded] = categoryData.split('-')
+  const categoryName = decodeURIComponent(categoryNameEncoded)
+  console.log(location.hash.split('=') )
   responseApi({
     apiUrl:'discover/movie',
     container:containerMovieSearch,
@@ -126,6 +128,7 @@ function movieDetailPage(){
   }
 
   getMovieById(movieid)
+  getVideoMovie(movieid)
 
   listMovieSelect
 }

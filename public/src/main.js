@@ -9,6 +9,7 @@ const api = axios.create({
   },
   params: {
     'api_key': API_KEY,
+    language:"es-ES"
   },
 })
 
@@ -31,7 +32,7 @@ function generateMovie(
     })
     const img = document.createElement('img')
     img.setAttribute('alt', movie.title)
-    img.setAttribute(lazyLoad?'data-img':'src', `https://image.tmdb.org/t/p/w300/${movie.poster_path}`)
+    img.setAttribute(lazyLoad?'data-img':'src', `https://image.tmdb.org/t/p/w500/${movie.poster_path}`)
     img.classList.remove('error')
     img.addEventListener('error',()=>{
       img.classList.add('error')
@@ -101,7 +102,10 @@ async function gettrendingPreview(){
 // }
 
 async function getCategories(){
-  api.get('genre/movie/list')
+  api.get('genre/movie/list',{
+    params: {
+    }
+  })
     .then((response)=>{
       const dataAxios = response.data.genres
       categoryMovie(dataAxios, generateCategory)
@@ -131,7 +135,7 @@ async function responseApi({
   apiUrl,
   params:{
     nameMovie = "",
-    idCategory = ""
+    idCategory = "",
   },
   container,
 }){
@@ -142,6 +146,7 @@ async function responseApi({
     }
   })
   .then((response)=>{
+    console.log(response)
     const dataAxios = response.data.results
     generateMovie(
       dataAxios,
@@ -186,7 +191,7 @@ async function getMovieById(movie_id){
       loadDescription.style.display = 'none'
       title.innerHTML = `${movie.data.vote_average}<span style="color:yellow;">&starf;</span>`
       startLoad.style.display = 'none'
-      imageSelect.setAttribute('src',`https://image.tmdb.org/t/p/w300/${movie.data.poster_path}`)
+      imageSelect.setAttribute('src',`https://image.tmdb.org/t/p/w500/${movie.data.poster_path}`)
       imageSelect.classList.remove('error')
       imageSelect.addEventListener('error',()=>{
         imageSelect.classList.add('error')
@@ -203,7 +208,6 @@ async function getRelateMovieId(movie_id){
   api.get(`movie/${movie_id}/similar`)
   .then((movie)=>{
     const movieData = movie.data.results
-    console.log(movie)
     generateMovie(
       movieData,
       window.innerWidth < 970?listMovieSelect:containerListMovieSelectDesktop,
@@ -238,7 +242,7 @@ function scrollMove({id = "",query = "",container,apiUrl}){
     const scrollBotton = (scrollTop + clientHeight) >= (scrollHeight - 100)
     if(scrollBotton ){
       count++
-      api.get(`${apiUrl}`,{params: {page: count, query: query, with_genres:id}})
+      api.get(`${apiUrl}`,{params: {page: count, query: query, with_genres:id,language:"es-ES"}})
       .then((response)=>{
         const dataAxios = response.data.results
         generateMovie(
@@ -255,4 +259,37 @@ function scrollMove({id = "",query = "",container,apiUrl}){
       })
     }
   }
+}
+function getVideoMovie(movie_id){
+  api.get(`movie/${movie_id}/videos`)
+  .then((movie)=>{
+    movieVideoPlay.innerHTML = ""
+    const movieData = movie.data.results
+    let url
+    const filterUrl = movieData.some((element)=>{
+      url = element.key
+      return element.name === 'Nuevo Tráiler Oficial'||element.name == 'Tráiler Oficial'
+    })
+    console.log(filterUrl)
+    if(filterUrl){
+      url
+    }else {
+      url = movieData[movieData.length - 1]
+      console.log(movieData.length)
+      
+    }
+    const div = document.createElement('div')
+    movieVideoPlay.appendChild(div)
+    const player = new YT.Player(div,{
+      videoId: url,
+      // width: 100,
+      // height: 100,
+      playerVars:{
+        autoplay:0
+      }
+    })
+  })
+  .catch(error=>{
+    console.log(error)
+  })
 }

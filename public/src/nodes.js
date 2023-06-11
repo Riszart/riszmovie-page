@@ -49,3 +49,8 @@ const arrowBotton = select('.content-arrow')
 
 const containerSearchMovie = select('.container-search')
 const containerSearch = select('.up-container_search')
+
+//detail
+
+const movieVideoPlay = select('.movie-video_play')
+const movieVideo = select('.movie-video')
