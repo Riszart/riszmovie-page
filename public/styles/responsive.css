@@ -105,7 +105,14 @@
     margin: 0;
     background-color: var(--color-back);
   }
-
+  .change-movie-select {
+    width: 100%;
+    min-height: calc(100vh - 50px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+  }
   .movie-title {
     font-size: 28px;
   }
@@ -135,14 +142,7 @@
 .inactive {
   display: none !important;
 }
-.change-movie-select {
-  width: 100%;
-  min-height: calc(100vh - 50px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: white;
-}
+
 .container-list-movie-select_desktop {
   padding: 50px;
   border-top: solid var(--color-background) 5px;

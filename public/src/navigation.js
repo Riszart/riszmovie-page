@@ -12,7 +12,8 @@ function search(){
   }
 }
 contentArrowImg.addEventListener('click', ()=>{
-  movieVideoPlay.innerHTML = ""
+  containerMovieSearch.innerHTML = ""
+  imageSelect.src = ''
   history.back()
   // location.hash = '#home='
 })
@@ -47,6 +48,7 @@ function navigator(){
 
 function homePage(){
   // console.log('home')
+  movieVideoPlay.innerHTML = ""
   title.innerText = 'riszmovie!...'
   contentArrowImg.classList.add('inactive')
   containerSearchMovie.classList.remove('showSearch')
@@ -64,12 +66,15 @@ function homePage(){
   containerFooter.classList.remove('inactive')
   mainMovie.classList.remove('change-movie-select')
   containerListMovieSelectDesktop.classList.add('inactive')
+  containerFavorite.classList.remove('inactive')
 
   gettrendingPreview() 
   getCategories()
+  getMoviesFavorite()
 }
 
 function categoriesPage(){
+  movieVideoPlay.innerHTML = ""
   contentArrowImg.classList.remove('inactive')
 
   // console.log('categories')
@@ -82,6 +87,7 @@ function categoriesPage(){
   categorySearch.classList.remove('inactive')
   trends.classList.add('inactive')
   mainMovie.classList.remove('change-movie-select')
+  containerFavorite.classList.add('inactive')
 
   const [_, categoryData] = location.hash.split('=') 
   const [categoryId, categoryNameEncoded] = categoryData.split('-')
@@ -116,21 +122,22 @@ function movieDetailPage(){
   containerMovieSelect.classList.remove('inactive')
   trends.classList.add('inactive')
   header.classList.remove('inactive')
-  
+  containerFavorite.classList.add('inactive')
 
   const [_, movieid] = location.hash.split('=') 
   containerListMovieSelectDesktop.classList.add('inactive')
 
-  if(window.innerWidth > 970){
-    mainMovie.classList.add('change-movie-select')
-  containerListMovieSelectDesktop.classList.remove('inactive')
-
-  }
+  // if(window.innerWidth > 970){
+  //   mainMovie.classList.add('change-movie-select')
+  // containerListMovieSelectDesktop.classList.remove('inactive')
+  // }
 
   getMovieById(movieid)
   getVideoMovie(movieid)
-
-  listMovieSelect
+  getCreditsMovie(movieid)
+  buttomSeeMoreCredits.onclick = ()=>{
+    getCreditsMovie(movieid, true)
+  }
 }
 
 function searchPage(){
@@ -149,6 +156,8 @@ function searchPage(){
   trends.classList.add('inactive')
   containerFooter.classList.remove('inactive')
   mainMovie.classList.remove('change-movie-select')
+  containerFavorite.classList.add('inactive')
+
   //['#search','string']
   const [_, queryHash] = location.hash.split('=') 
   responseApi({
@@ -178,6 +187,7 @@ function trendsPage(){
   containerMovieSelect.classList.add('inactive')
   categorySearch.classList.add('inactive')
   listMovieSearch.classList.add('inactive')
+  containerFavorite.classList.add('inactive')
   mainMovie.classList.remove('change-movie-select')
 
   responseApi({

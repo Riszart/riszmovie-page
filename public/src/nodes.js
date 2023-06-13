@@ -5,6 +5,7 @@ const containerCategories = select('.container-categories')
 const categorySearch = select('.category-search')
 const containerMovieSelect = select('.container-movie-select')
 const listMovieSearch = select('.list-movie-search')
+
 const containerFooter = select('.content-footer')
 const title = select('.container-title')
 
@@ -38,7 +39,6 @@ const containerSubtitle = select('.container-subtitle')
 const mainMovie = select('main')
 const containerListMovieSelectDesktop = select('.container-list-movie-select_desktop')
 
-
 // header
 
 const contentArrowImg = select('.content-arrow__img')
@@ -54,3 +54,10 @@ const containerSearch = select('.up-container_search')
 
 const movieVideoPlay = select('.movie-video_play')
 const movieVideo = select('.movie-video')
+const movieContainer = select('.credits-container')
+const buttomSeeMoreCredits = select('.buttom-see-more-credits')
+
+//favorite
+const containerFavoriteList = select('.container-favorite__list')
+const containerFavorite = select('.container-favorite')
+

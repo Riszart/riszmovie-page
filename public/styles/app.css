@@ -1,8 +1,8 @@
 :root{
   --color-primary: #000;
   --color-third: #9223237a;
-  --color-back: #b4cefd;
-  --color-background: #6c7bc0;
+  --color-back: #a7ccb3;
+  --color-background: #0a3b1a;
   --box-shodow: inset 0px 0px 10px 2px black;
 }
 *::-webkit-scrollbar {
@@ -22,19 +22,57 @@
   padding: 0;
   font-family: Helvetica, sans-serif;
 }
+.items-right-style {
+  display: flex;
+  gap: 10px;
+  padding: 0 10px 0 10px;
+  overflow-y: hidden;
+  overflow-x: scroll;
+}
+.container-right-style {
+}
+.style-subtitle {
+  padding: 20px 0 10px 20px;
+  text-transform: capitalize;
+}
 .movie {
   flex: none;
+  position: relative;
   width: 180px;
   height: 270px;
   border-radius: 15px;
   cursor: pointer;
   overflow: hidden;
 }
+.movie-btn {
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  z-index: 100;
+  background-color: var(--color-background);
+  border: solid 2px var(--color-back);
+}
+.movie-btn::before {
+  content: '♥';
+  font-size: 38px;
+  color: var(--color-back);
+}
+.movie-btn__liked {
+  border: solid 2px red;
+}
+.movie-btn__liked::before {
+  content: '♥';
+  font-size: 38px;
+  color: red;
+}
 .movie-load-show{
   flex: none;
   background-color: gray;
-  width: 120px;
-  height: 180px;
+  width: 180px;
+  height: 270px;
   border-radius: 5px;
   animation-name: load-item;
   animation-duration: 1s;
@@ -108,6 +146,7 @@ body {
 }
 .header{
   width: 100vw;
+  top: 0;
   position: fixed;
   z-index: 1000;
 }
@@ -213,13 +252,8 @@ main{
 .search-button img {
   width: 50%;
 }
-/* trend */
+/* -------------------------------------------trend */
 
-.container-trends {
-  margin: 0 25px;
-  width: calc(100% - 50px);
-  min-height: 350px;
-}
 .conatiner-trends__title{
   display: flex;
   justify-content: space-between;
@@ -227,45 +261,14 @@ main{
   margin-bottom: 15px;
   border-radius: 25px;
 }
-.over{
-  position: absolute;
-  left: 0;
-  z-index: 150;
-  width: 100%;
-  height: 320px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  background-color: var(--color-back);
-}
-.container-movies__trends {
-  padding-top: 25px;
-  display: flex;
-  gap: 10px;
-}
-.container-movies__trends article:first-child {
-  margin-left: 15px;
-}
-.container-movies__trends article:last-child {
-  margin-right: 15px;
-}
 
 /* categoria  id  */
 
 .container-categories {
-  margin: 0 25px;
-  padding-bottom: 30px;
-  width: calc(100% - 50px);
-}
-.container-categories h2 {
-  margin-top: 20px;
-  text-transform: capitalize;
-  padding: 15px 10px;
-  border-radius: 25px;
 }
 
 .generate-category {
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding: 0 0 0 20px;
   row-gap: 5px;
   font-size: 16px;
 }
@@ -276,7 +279,6 @@ main{
   display: flex;
   align-items: center;
 }
-
 .color-category {
   width: 25px;
   height: 25px;
@@ -295,6 +297,12 @@ main{
 .name-category:hover {
   background-color: var(--color-third);
 }
+/*---------------------------------favorite*/
+
+.container-favorite {
+  padding-bottom: 40px;
+}
+
                                   /* category search*/
 /* .title-category_search{
 } */
@@ -353,7 +361,7 @@ main{
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 15px;
   padding-top: 25px;
   border-radius: 40px;
   background-color: white;
@@ -394,19 +402,74 @@ main{
   width: 100%;
   height: 100%;
 }
+.category-select_container h3 {
+  padding-bottom: 10px;
+}
 .category-select {
   width: calc(100% - 50px);
-  padding: 0 25px;
+  padding: 15px 25px;
+  background-color: var(--color-back);
 }
+.title-credits {
+  width: calc(100% - 15px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+}
+.style-h3 {
+  display: block;
+  margin-left: 20px;
+  font-size: 20px;
+}
+.credits-container {
+  display: grid;
+  place-content: center;
+  gap: 10px;
+  grid-template-columns: 110px 110px 110px;
+  background-color: var(--color-back);
+  padding: 15px 0;
+}
+.credits-container article {
+  overflow: hidden;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: white;
+}
+.credits-container article div:first-child {
+  width: 100%;
+  height: 120px;
+
+  border-radius: 5px;
+  overflow: hidden;
+}
+.credits-container article div:first-child img {
+  width: 100%;
+  color: var(--color-background);
+  font-size: 12px;
+  font-weight: 700;
+  object-position: center;
+}
+.credits-container article div:last-child p:first-child {
+  color: var(--color-background);
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1;
+  text-align: center;
+}
+.credits-container article div:last-child p:last-child {
+  color: var(--color-background);
+  font-size: 14px;
+  text-align: center;
+}
+
 .container-list-movie-select {
   width: 100vw;
   position: relative;
-  padding-bottom: 40px;
+  padding-bottom: 50px;
 }
-.container-list-movie-select h4 {
-  font-size: 20px;
-  margin-left: 25px;
-  margin-bottom: 10px;
+.container-list-movie-select h3 {
+  padding-bottom: 10px;
 }
 .movie-select-class {
   width: 100%;
@@ -467,7 +530,7 @@ main{
 .content-footer p{
   font-size: 14px;
   font-weight: 600;
-  color: var(--color-primary);
+  color: white;
 }
 .content-footer a{
   font-size: 13px;
@@ -478,21 +541,21 @@ main{
   color: var(--color-primary);
 }
 
-#id28 { background-color: rgb(255, 0, 106);}
-#id12 { background-color: blue;}
-#id16 { background-color: brown;}
-#id35 { background-color: green;}
-#id80 { background-color: yellow;}
+#id28 { background-color: rgb(116, 0, 0);}
+#id12 { background-color: rgb(64, 121, 31);}
+#id16 { background-color: yellow;}
+#id35 { background-color: rgb(155, 255, 230);}
+#id80 { background-color: rgb(255, 0, 0);}
 #id99 { background-color: rgb(197, 113, 64);}
-#id18 { background-color: rgb(38, 199, 73);}
+#id18 { background-color: rgb(177, 255, 194);}
 #id10751 { background-color: rgb(185, 40, 161);}
 #id14 { background-color: rgb(0, 153, 255);}
 #id36 { background-color: rgb(128, 69, 69);}
-#id27 { background-color: rgb(0, 255, 191);}
+#id27 { background-color: rgb(0, 75, 56);}
 #id10402 { background-color: rgb(179, 255, 0);}
-#id9648 { background-color: rgb(55, 0, 255);}
-#id10749 { background-color: rgb(17, 0, 255);}
-#id878 { background-color: rgb(0, 255, 115);}
+#id9648 { background-color: rgb(114, 75, 255);}
+#id10749 { background-color: rgb(150, 170, 148);}
+#id878 { background-color: rgb(85, 172, 124);}
 #id10770 { background-color: rgb(36, 92, 48);}
 #id53 { background-color: rgb(71, 57, 29);}
 #id10752 { background-color: rgb(59, 112, 75);}

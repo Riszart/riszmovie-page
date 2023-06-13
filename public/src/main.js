@@ -1,4 +1,5 @@
-const API_KEY = 'd7ea524a59ef60701f4883af10e17628'
+let API_KEY = 'd7ea524a59ef60701f4883af10e17628'
+
 let querySearchMovie
 let maxPage
 let count = 1
@@ -27,18 +28,40 @@ function generateMovie(
   data.forEach(movie => {
     const article = document.createElement('article')
     article.classList.add('movie')
-    article.addEventListener('click',()=>{
-      location.hash = `#movie=${movie.id}`
-    })
+    article.setAttribute('data-select',movie.id)
+
     const img = document.createElement('img')
     img.setAttribute('alt', movie.title)
     img.setAttribute(lazyLoad?'data-img':'src', `https://image.tmdb.org/t/p/w500/${movie.poster_path}`)
     img.classList.remove('error')
+    img.addEventListener('click',()=>{
+      location.hash = `#movie=${movie.id}`
+    })
     img.addEventListener('error',()=>{
       img.classList.add('error')
       img.setAttribute('alt', `imagen de -(- ${movie.title} -)- NO DISPONIBLE`)
     })
-    article.appendChild(img)
+    const btn = document.createElement('button')
+    btn.classList.add('movie-btn')
+    btn.addEventListener('click', ()=>{
+      let selectElement = containeMovieTrends.querySelector(`[data-select="${movie.id}"] button.movie-btn__liked`)
+      if(selectElement){
+        containeMovieTrends.querySelector(`[data-select="${movie.id}"] button`).classList.remove('movie-btn__liked')
+      }else{
+        btn.classList.toggle('movie-btn__liked')
+      }
+      addfavorite(movie)
+      getMoviesFavorite()
+    })
+
+    likedMovieList()[movie.id] && btn.classList.add('movie-btn__liked') // condicional que aplica cambios si es true  -similar a esto-  if(likedMovieList()[movie.id])btn.classList.add('movie-btn__liked')
+    // let arrayLikeMovies = Object.keys(likedMovieList())
+    // arrayLikeMovies.forEach((movieFavorite)=>{
+    //   if(movieFavorite == movie.id){
+    //     btn.classList.add('movie-btn__liked')
+    //   }
+    // })
+    article.append(btn,img)
     container.appendChild(article)
 
     if(lazyLoad)lazyLoader.observe(img)
@@ -82,24 +105,7 @@ async function gettrendingPreview(){
     console.log(error)
   }
 }
-// async function trnedsMovie(apiUrl, container){
-//   api.get(`${apiUrl}`)
-//     .then((response)=>{
-//       const dataAxios = response.data.results
-//       generateMovie(
-//         dataAxios,
-//         container,
-//         {
-//           clean:true,
-//           lazyLoad:true
-//         }
-//       )
-//       maxPage = response.data.total_pages
-//     })
-//     .catch(error=>{
-//       console.log(error)
-//     })
-// }
+
 
 async function getCategories(){
   api.get('genre/movie/list',{
@@ -114,23 +120,7 @@ async function getCategories(){
       console.log(error)
     })
 }
-// async function getMoviesCategory(apiUrl,id,container){
-//   api.get(`${apiUrl}`,{params: {with_genres:id}})
-//     .then((response)=>{
-//       const dataAxios = response.data.results
-//       generateMovie(
-//         dataAxios,
-//         container,
-//         {
-//           clean:true,
-//           lazyLoad:true
-//         }
-//       )
-//     })
-//     .catch(error=>{
-//       console.log(error)
-//     })
-// }
+
 async function responseApi({
   apiUrl,
   params:{
@@ -146,7 +136,6 @@ async function responseApi({
     }
   })
   .then((response)=>{
-    console.log(response)
     const dataAxios = response.data.results
     generateMovie(
       dataAxios,
@@ -162,24 +151,6 @@ async function responseApi({
   })
 }
 
-// async function getMoviesSearch(apiUrl,srting,container){
-//   api.get(`${apiUrl}`,{params: {query: srting}})
-//     .then((response)=>{
-//       const dataAxios = response.data.results
-//       generateMovie(
-//         dataAxios,
-//         container,
-//         {
-//           clean:true,
-//           lazyLoad:true
-//         }
-//       )
-//       querySearchMovie = srting
-//     })
-//     .catch(error=>{
-//       console.log(error)
-//     })
-// }
 async function getMovieById(movie_id){
   movieSearchString.innerHTML = ''
   categorySelect.innerHTML = ''
@@ -265,23 +236,10 @@ function getVideoMovie(movie_id){
   .then((movie)=>{
     movieVideoPlay.innerHTML = ""
     const movieData = movie.data.results
-    let url
-    const filterUrl = movieData.some((element)=>{
-      url = element.key
-      return element.name === 'Nuevo Tráiler Oficial'||element.name == 'Tráiler Oficial'
-    })
-    console.log(filterUrl)
-    if(filterUrl){
-      url
-    }else {
-      url = movieData[movieData.length - 1]
-      console.log(movieData.length)
-      
-    }
     const div = document.createElement('div')
     movieVideoPlay.appendChild(div)
     const player = new YT.Player(div,{
-      videoId: url,
+      videoId: movieData[movieData.length - 1].key,
       // width: 100,
       // height: 100,
       playerVars:{
@@ -292,4 +250,66 @@ function getVideoMovie(movie_id){
   .catch(error=>{
     console.log(error)
   })
+}
+function getCreditsMovie(movie_id, block=false){
+  api.get(`movie/${movie_id}/credits`)
+  .then((credits)=>{
+    let count = 0
+    const dataCredits = credits.data.cast
+    dataCredits.length > 6
+    ?buttomSeeMoreCredits.classList.remove('inactive')
+    :buttomSeeMoreCredits.classList.add('inactive')
+    // console.log(dataCredits)
+    movieContainer.innerHTML = ""
+    dataCredits.forEach((credit)=>{
+      count++
+      if(count < 7 || block==true){
+        const article = document.createElement('article')
+        const divImg = document.createElement('div')
+        const img = document.createElement('img')
+        img.setAttribute('src', `https://image.tmdb.org/t/p/w500/${credit.profile_path}`)
+        img.addEventListener('error',()=>{
+          img.setAttribute('src', `https://riszart.github.io/riszmovie-page/public/img/user-undefined.svg`)
+        })
+        img.setAttribute('alt', credit.original_name)
+        const div = document.createElement('div')
+        const characterName = document.createElement('p')
+        characterName.textContent = credit.character
+        const name = document.createElement('p')
+        name.textContent = credit.original_name
+  
+        divImg.appendChild(img)
+        div.append(name,characterName)
+        article.append(divImg,div)
+        movieContainer.appendChild(article)
+      }
+    })
+  })
+  .catch(error=>{
+    console.log(error)
+  })
+}
+function addfavorite(movie){
+  let likedMovie = likedMovieList()
+  
+  if(likedMovie[movie.id]){
+    likedMovie[movie.id] = undefined
+  }else{
+    likedMovie[movie.id] = movie
+  }
+  localStorage.setItem('movie-liked', JSON.stringify(likedMovie))
+  likedMovie
+}
+function likedMovieList(){
+  const item = JSON.parse(localStorage.getItem('movie-liked'))
+  let movies
+  if(item)movies = item
+  else movies={}
+  return movies
+}
+function getMoviesFavorite(){
+  const likeMovies = likedMovieList()
+  let arrayLikeMovies = Object.values(likeMovies)
+  // console.log(arrayLikeMovies)
+  generateMovie(arrayLikeMovies,containerFavoriteList,{clean:true,lazyLoad:false})
 }
