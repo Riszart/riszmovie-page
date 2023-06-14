@@ -124,7 +124,8 @@ function movieDetailPage(){
   header.classList.remove('inactive')
   containerFavorite.classList.add('inactive')
 
-  const [_, movieid] = location.hash.split('=') 
+  const [_, movie] = location.hash.split('=') 
+  const [movieid, moviename] = movie.split('-')
   containerListMovieSelectDesktop.classList.add('inactive')
 
   // if(window.innerWidth > 970){
@@ -133,7 +134,7 @@ function movieDetailPage(){
   // }
 
   getMovieById(movieid)
-  getVideoMovie(movieid)
+  getVideoMovie(movieid,decodeURIComponent(moviename))
   getCreditsMovie(movieid)
   buttomSeeMoreCredits.onclick = ()=>{
     getCreditsMovie(movieid, true)

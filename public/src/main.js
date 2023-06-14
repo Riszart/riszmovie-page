@@ -3,6 +3,7 @@ let API_KEY = 'd7ea524a59ef60701f4883af10e17628'
 let querySearchMovie
 let maxPage
 let count = 1
+
 const api = axios.create({
   baseURL: 'https://api.themoviedb.org/3/',
   headers: {
@@ -10,13 +11,13 @@ const api = axios.create({
   },
   params: {
     'api_key': API_KEY,
-    language:"es-ES"
+    language:lang
   },
 })
 
 // DRY
 
-function generateMovie(
+async function generateMovie(
   data, 
   container,
   {
@@ -35,7 +36,7 @@ function generateMovie(
     img.setAttribute(lazyLoad?'data-img':'src', `https://image.tmdb.org/t/p/w500/${movie.poster_path}`)
     img.classList.remove('error')
     img.addEventListener('click',()=>{
-      location.hash = `#movie=${movie.id}`
+      location.hash = `#movie=${movie.id}-${movie.title}`
     })
     img.addEventListener('error',()=>{
       img.classList.add('error')
@@ -210,7 +211,7 @@ function scrollMove({id = "",query = "",container,apiUrl}){
       clientHeight
     } = document.documentElement
     // const pageNotMax = page < maxPage
-    const scrollBotton = (scrollTop + clientHeight) >= (scrollHeight - 100)
+    const scrollBotton = (scrollTop + clientHeight) >= (scrollHeight - 50)
     if(scrollBotton ){
       count++
       api.get(`${apiUrl}`,{params: {page: count, query: query, with_genres:id,language:"es-ES"}})
@@ -231,27 +232,45 @@ function scrollMove({id = "",query = "",container,apiUrl}){
     }
   }
 }
-function getVideoMovie(movie_id){
+async function getVideoMovie(movie_id,movie_name){
   api.get(`movie/${movie_id}/videos`)
   .then((movie)=>{
     movieVideoPlay.innerHTML = ""
     const movieData = movie.data.results
-    const div = document.createElement('div')
-    movieVideoPlay.appendChild(div)
-    const player = new YT.Player(div,{
-      videoId: movieData[movieData.length - 1].key,
-      // width: 100,
-      // height: 100,
-      playerVars:{
-        autoplay:0
-      }
-    })
+    if(!movieData.length == 0){
+      const div = document.createElement('div')
+      movieVideoPlay.appendChild(div)
+      const player = new YT.Player(div,{
+        videoId: movieData[movieData.length - 1].key,
+        // width: 100,
+        // height: 100,
+        playerVars:{
+          autoplay:0
+          }
+      })
+    }else {
+      const div = document.createElement('div')
+      div.classList.add('content-text__youtube')
+      const p = document.createElement('p')
+      p.classList.add('text-youtube')
+      p.textContent = "ir a"
+      const btn = document.createElement('buttom')
+      btn.classList.add('btn-youtube-go')
+      btn.textContent = "youtube"
+      let letter = movie_name.split(' ').join('+')
+      btn.addEventListener('click',()=>{
+        let a = movieTitle.innertext
+        window.open(`https://www.youtube.com/results?search_query=${letter}+Trailer`, '_blank')
+      } )
+      div.append(p,btn)
+      movieVideoPlay.appendChild(div)
+    }
   })
   .catch(error=>{
     console.log(error)
   })
 }
-function getCreditsMovie(movie_id, block=false){
+async function getCreditsMovie(movie_id, block=false){
   api.get(`movie/${movie_id}/credits`)
   .then((credits)=>{
     let count = 0
@@ -313,3 +332,5 @@ function getMoviesFavorite(){
   // console.log(arrayLikeMovies)
   generateMovie(arrayLikeMovies,containerFavoriteList,{clean:true,lazyLoad:false})
 }
+
+

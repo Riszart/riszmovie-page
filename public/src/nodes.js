@@ -61,3 +61,7 @@ const buttomSeeMoreCredits = select('.buttom-see-more-credits')
 const containerFavoriteList = select('.container-favorite__list')
 const containerFavorite = select('.container-favorite')
 
+//flag
+
+const flagEs = select('.es-es')
+const flagEn = select('.en-us')
