@@ -1,5 +1,3 @@
-let API_KEY = 'd7ea524a59ef60701f4883af10e17628'
-
 let querySearchMovie
 let maxPage
 let count = 1
@@ -11,7 +9,8 @@ const api = axios.create({
   },
   params: {
     'api_key': API_KEY,
-    language:lang
+    'language':lang,
+    'include_adult':adult,
   },
 })
 
@@ -39,18 +38,20 @@ async function generateMovie(
       location.hash = `#movie=${movie.id}-${movie.title}`
     })
     img.addEventListener('error',()=>{
-      img.classList.add('error')
-      img.setAttribute('alt', `imagen de -(- ${movie.title} -)- NO DISPONIBLE`)
+      img.setAttribute('src', `/public/img/nbo-disponible-img.jpg`)
+      // img.classList.add('error')
+      // img.setAttribute('alt', `imagen de -(- ${movie.title} -)- NO DISPONIBLE`)
     })
     const btn = document.createElement('button')
     btn.classList.add('movie-btn')
     btn.addEventListener('click', ()=>{
-      let selectElement = containeMovieTrends.querySelector(`[data-select="${movie.id}"] button.movie-btn__liked`)
-      if(selectElement){
-        containeMovieTrends.querySelector(`[data-select="${movie.id}"] button`).classList.remove('movie-btn__liked')
-      }else{
-        btn.classList.toggle('movie-btn__liked')
-      }
+      // let selectElement = containeMovieTrends.querySelector(`[data-select="${movie.id}"] button.movie-btn__liked`)
+      // if(selectElement){
+      //   btn.classList.toggle('movie-btn__liked')
+      // }else{
+      //   btn.classList.toggle('movie-btn__liked')
+      // }
+      btn.classList.toggle('movie-btn__liked')
       addfavorite(movie)
       getMoviesFavorite()
     })
@@ -107,7 +108,6 @@ async function gettrendingPreview(){
   }
 }
 
-
 async function getCategories(){
   api.get('genre/movie/list',{
     params: {
@@ -115,6 +115,7 @@ async function getCategories(){
   })
     .then((response)=>{
       const dataAxios = response.data.genres
+      console.log(response)
       categoryMovie(dataAxios, generateCategory)
     })
     .catch(error=>{
@@ -167,7 +168,7 @@ async function getMovieById(movie_id){
       imageSelect.classList.remove('error')
       imageSelect.addEventListener('error',()=>{
         imageSelect.classList.add('error')
-        imageSelect.setAttribute('alt', `Imagen de -(- ${movie.data.title} -)- NO DISPONIBLE..!!!`)
+        imageSelect.setAttribute('src', `/public/img/nbo-disponible-img.jpg`)
       })
       categoryMovie(movie.data.genres,categorySelect)
       getRelateMovieId(movie_id)
@@ -253,7 +254,8 @@ async function getVideoMovie(movie_id,movie_name){
       div.classList.add('content-text__youtube')
       const p = document.createElement('p')
       p.classList.add('text-youtube')
-      p.textContent = "ir a"
+      if(lang == 'es-US'|| lang == 'es-ES')p.textContent = "ir a"
+      else p.textContent = "go to"
       const btn = document.createElement('buttom')
       btn.classList.add('btn-youtube-go')
       btn.textContent = "youtube"

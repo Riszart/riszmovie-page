@@ -14,6 +14,22 @@
   <link rel="shortcut icon" href="https://riszart.github.io/riszmovie-page/public/img/icon-movie.webp">
 </head>
 <body>
+  <div class="ask-adult">
+    <div class="ask">
+      <p class="ask-adult_question"></p>
+      <div class="content-answer">
+        <div class="content-true">
+          <label class="label-si" for="si"></label>
+          <input id="si" type="radio" name="question" value="true">
+        </div>
+        <div class="content-false">
+          <label class="label-no" for="no"></label>
+        <input id="no" type="radio" name="question" value="false">
+        </div>
+        <button class="check-ask"></button>
+      </div>
+    </div>
+  </div>
   <header class="header" >
     <div class="header-top">
       <div class="content-arrow">
@@ -24,24 +40,26 @@
     <canvas class="header-bottom"></canvas>
   </header>
   <main>
-    <section class="container-lang">
-      <div class="lang-iten">
-        <img class="es-es" src="https://riszart.github.io/riszmovie-page/public/img/es-es.png" alt="es-ES">
-        <img class="en-us" src="https://riszart.github.io/riszmovie-page/public/img/en-us.png" alt="en-US">
-      </div>
-    </section>
-    <section class="up-container_search">
-      <div class="img-inicio"></div>
-      <p class="container-subtitle">Millones de películas para descubrir. Animate y conoce las tendencias, los estrenos y mas</p>
-      <div class="container-search">
-        <input class="search-string" type="text" placeholder="search">
-        <button class="search-button "><img src="https://riszart.github.io/riszmovie-page/public/img/342301.png" alt=""></button>
-      </div>
-    </section>
+    <div class="conatiner-image-perfil">
+      <section class="container-lang">
+        <div class="lang-iten">
+          <img class="es-es" src="https://riszart.github.io/riszmovie-page/public/img/es-es.png" alt="es-ES">
+          <img class="en-us" src="https://riszart.github.io/riszmovie-page/public/img/en-us.png" alt="en-US">
+        </div>
+      </section>
+      <section class="up-container_search">
+        <div class="img-inicio"></div>
+        <p class="container-subtitle"></p>
+        <div class="container-search">
+          <input class="search-string" type="text" placeholder="search">
+          <button class="search-button "><img src="https://riszart.github.io/riszmovie-page/public/img/342301.png" alt=""></button>
+        </div>
+      </section>
+    </div>
     <section class="container-trends container-right-style">
       <div class="conatiner-trends__title">
-        <h2>Tendencias</h2>
-        <button class="container-trends_button style-button">ver mas</button>
+        <h2 class=""></h2>
+        <button class="container-trends_button style-button"></button>
       </div>
       <div class="container-movies__trends items-right-style">
         <article class="movie-load-show"></article>
@@ -52,7 +70,7 @@
       </div>
     </section>
     <section class="container-categories">
-      <h2 class="style-subtitle">category</h2>
+      <h2 class="style-subtitle"></h2>
       <div class="generate-category display-grid">
         <div class="category-load"></div>
         <div class="category-load"></div>
@@ -65,7 +83,7 @@
       </div>
     </section>
     <section class="container-favorite container-right-style">
-      <h2 class="style-subtitle">Peliculas Favoritas</h2>
+      <h2 class="style-subtitle"></h2>
       <div class="container-favorite__list items-right-style">
         <!-- <article><img src="" alt=""></article> -->
       </div>
@@ -100,7 +118,7 @@
         </div>
         <div class="movie-video_play"></div>
         <div class="category-select_container">
-          <h3 class="style-h3">Categorias Relacionados</h3>
+          <h3 class="style-h3"></h3>
           <div class="category-select display-grid">
             <div class="category-load"></div>
             <div class="category-load"></div>
@@ -114,8 +132,8 @@
         </div>
         <div class="credits-container_title-articles">
           <div class="title-credits">
-            <h3 class="style-h3">Creditos</h3>
-            <button class="buttom-see-more-credits style-button">ver mas</button>
+            <h3 class="style-h3"></h3>
+            <button class="buttom-see-more-credits style-button"></button>
           </div>
           <div class="credits-container">
           <!-- <article>
@@ -128,7 +146,7 @@
         </div>
         </div>
         <div class="container-list-movie-select">
-          <h3 class="style-h3">Peliculas Similares</h3>
+          <h3 class="style-h3"></h3>
           <div class="movie-select-class">
             <div class="list-movie">
               <!-- <article><img src="" alt=""></article> -->
@@ -173,8 +191,8 @@
     canvas.height = 40
 
     ctx.beginPath()
-    ctx.strokeStyle = "#0a3b1a";
-    ctx.fillStyle="#0a3b1a";
+    ctx.strokeStyle = "#2c4b55";
+    ctx.fillStyle="#2c4b55";
     ctx.lineWidth = .1;
     ctx.moveTo(40,0)
     ctx.lineTo(0,0)

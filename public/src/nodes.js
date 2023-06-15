@@ -1,5 +1,9 @@
 const select = (clas) => document.querySelector(clas)
 
+const styleButton = document.querySelectorAll('.style-button')
+const boyContent = document.querySelector('body')
+
+
 const containerTrends = select('.container-trends')
 const containerCategories = select('.container-categories')
 const categorySearch = select('.category-search')
@@ -41,6 +45,7 @@ const containerListMovieSelectDesktop = select('.container-list-movie-select_des
 
 // header
 
+const conatinerImagePerfil = select('.conatiner-image-perfil')
 const contentArrowImg = select('.content-arrow__img')
 const header = select('.header')
 const arrowBotton = select('.content-arrow')
@@ -50,18 +55,44 @@ const arrowBotton = select('.content-arrow')
 const containerSearchMovie = select('.container-search')
 const containerSearch = select('.up-container_search')
 
-//detail
+// trends
 
+const conatinerTrendsTitleH2 = select('.conatiner-trends__title h2')
+
+// category
+
+const containerCategoriesH2 = select('.container-categories h2')
+
+//detail
+const containerListMovieSelectH3 = select('.container-list-movie-select h3')
 const movieVideoPlay = select('.movie-video_play')
 const movieVideo = select('.movie-video')
 const movieContainer = select('.credits-container')
 const buttomSeeMoreCredits = select('.buttom-see-more-credits')
+const titleCreditsH3 = select('.title-credits h3')
+const categorySelectContainerH3 = select('.category-select_container h3')
 
 //favorite
 const containerFavoriteList = select('.container-favorite__list')
 const containerFavorite = select('.container-favorite')
+const containerFavoriteH2 = select('.container-favorite h2')
 
 //flag
 
+const containerLang = select('.container-lang')
 const flagEs = select('.es-es')
 const flagEn = select('.en-us')
+
+//footer 
+
+const contentFooterA = select('.content-footer a')
+const contentFooterP = select('.content-footer p')
+
+// input
+const siAdult = select('#si')
+const noAdult = select('#no')
+const askSdult = select('.ask-adult')
+const checkAsk = select('.check-ask')
+const askAdultQuestion = select('.ask-adult_question')
+const labelSi =select('.label-si')
+const labelNo =select('.label-no')

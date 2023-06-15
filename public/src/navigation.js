@@ -48,8 +48,10 @@ function navigator(){
 
 function homePage(){
   // console.log('home')
+  conatinerImagePerfil.classList.remove('inactive')
   movieVideoPlay.innerHTML = ""
   title.innerText = 'riszmovie!...'
+  containerLang.classList.remove('inactive')
   contentArrowImg.classList.add('inactive')
   containerSearchMovie.classList.remove('showSearch')
 
@@ -76,8 +78,11 @@ function homePage(){
 function categoriesPage(){
   movieVideoPlay.innerHTML = ""
   contentArrowImg.classList.remove('inactive')
+  conatinerImagePerfil.classList.add('inactive')
+
 
   // console.log('categories')
+  containerLang.classList.add('inactive')
   header.classList.remove('inactive')
   containerSearch.classList.add('inactive')
   containerTrends.classList.add('inactive')
@@ -112,6 +117,8 @@ function categoriesPage(){
 function movieDetailPage(){
   // console.log('movies')
   contentArrowImg.classList.remove('inactive')
+  containerLang.classList.add('inactive')
+  conatinerImagePerfil.classList.add('inactive')
 
   containerSearch.classList.add('inactive')
   containerTrends.classList.add('inactive')
@@ -145,6 +152,8 @@ function searchPage(){
   console.log('search')
   contentArrowImg.classList.remove('inactive')
   containerSearchMovie.classList.add('showSearch')
+  containerLang.classList.add('inactive')
+  conatinerImagePerfil.classList.add('inactive')
 
   containerSubtitle.classList.add('inactive')
   header.classList.remove('inactive')
@@ -178,6 +187,7 @@ function searchPage(){
 
 function trendsPage(){
   // console.log('trends')
+  conatinerImagePerfil.classList.add('inactive')
   contentArrowImg.classList.remove('inactive')
   title.innerText = 'tendencia'
   containerSearch.classList.add('inactive')
@@ -190,6 +200,7 @@ function trendsPage(){
   listMovieSearch.classList.add('inactive')
   containerFavorite.classList.add('inactive')
   mainMovie.classList.remove('change-movie-select')
+  containerLang.classList.add('inactive')
 
   responseApi({
     apiUrl:'trending/movie/day',
