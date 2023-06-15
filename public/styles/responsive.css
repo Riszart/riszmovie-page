@@ -31,7 +31,7 @@
     color: #fff;
   }
   .conatiner-image-perfil{
-    background-image: url('/public/img/img-back-1024x576.jpg');
+    background-image: url('https://riszart.github.io/riszmovie-page/public/img/img-back-1024x576.jpg');
     background-position: top;
     background-repeat: no-repeat;
     background-size: cover;
