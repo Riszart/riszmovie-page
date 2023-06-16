@@ -3,22 +3,26 @@ let API_KEY
 let butonChangeMore
 let butonChangeNone
 function language(){
+  console.log('lang')
   if(localStorage.getItem('lang')){
+    console.log('local')
     lang = localStorage.getItem('lang')
     changeDisplayLang(lang)
     return
   }
   if(window.navigator.language){
+    console.log('web')
     localStorage.setItem('lang', window.navigator.language)
+    lang = window.navigator.language
     changeDisplayLang(lang)
     return
   }
-  console.log('pass')
   lang = 'en-US'
   localStorage.setItem('lang', lang)
   changeDisplayLang(lang)
 }
 language()
+
 
 function changeDisplayLang(){
   changeLang()
