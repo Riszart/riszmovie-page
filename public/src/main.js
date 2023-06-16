@@ -38,9 +38,9 @@ async function generateMovie(
       location.hash = `#movie=${movie.id}-${movie.title}`
     })
     img.addEventListener('error',()=>{
-      img.setAttribute('src', `https://riszart.github.io/riszmovie-page/public/img/nbo-disponible-img.jpg`)
+      img.setAttribute('src', `https://riszart.github.io/riszmovie-page/public/img/no-disponible.jpg`)
       // img.classList.add('error')
-      // img.setAttribute('alt', `imagen de -(- ${movie.title} -)- NO DISPONIBLE`)
+      img.setAttribute('alt', `imagen de -(- ${movie.title} -)- NO DISPONIBLE`)
     })
     const btn = document.createElement('button')
     btn.classList.add('movie-btn')
@@ -56,12 +56,9 @@ async function generateMovie(
 
     imageBtn()
     function imageBtn(){
-      console.log(btn.classList.contains('movie-btn__liked'), "a")
       if(!btn.classList.contains('movie-btn__liked')){
-        console.log('in')
         imgBtn.setAttribute('src', 'https://riszart.github.io/riszmovie-page/public/img/plus-svgrepo-com.svg')
       }else {
-        console.log('out')
         imgBtn.setAttribute('src', `https://riszart.github.io/riszmovie-page/public/img/favorite-svgrepo-com.svg`)
       }
       btn.classList.toggle('movie-btn__liked')
