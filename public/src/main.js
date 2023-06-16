@@ -180,7 +180,7 @@ async function getMovieById(movie_id){
       imageSelect.classList.remove('error')
       imageSelect.addEventListener('error',()=>{
         imageSelect.classList.add('error')
-        imageSelect.setAttribute('src', `/public/img/nbo-disponible-img.jpg`)
+        imageSelect.setAttribute('src', `https://riszart.github.io/riszmovie-page/public/img/no-disponible.jpg`)
       })
       categoryMovie(movie.data.genres,categorySelect)
       getRelateMovieId(movie_id)
