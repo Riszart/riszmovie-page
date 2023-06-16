@@ -38,23 +38,14 @@ async function generateMovie(
       location.hash = `#movie=${movie.id}-${movie.title}`
     })
     img.addEventListener('error',()=>{
-      img.setAttribute('src', `/public/img/nbo-disponible-img.jpg`)
+      img.setAttribute('src', `https://riszart.github.io/riszmovie-page/public/img/nbo-disponible-img.jpg`)
       // img.classList.add('error')
       // img.setAttribute('alt', `imagen de -(- ${movie.title} -)- NO DISPONIBLE`)
     })
     const btn = document.createElement('button')
     btn.classList.add('movie-btn')
-    btn.addEventListener('click', ()=>{
-      // let selectElement = containeMovieTrends.querySelector(`[data-select="${movie.id}"] button.movie-btn__liked`)
-      // if(selectElement){
-      //   btn.classList.toggle('movie-btn__liked')
-      // }else{
-      //   btn.classList.toggle('movie-btn__liked')
-      // }
-      btn.classList.toggle('movie-btn__liked')
-      addfavorite(movie)
-      getMoviesFavorite()
-    })
+    const imgBtn = document.createElement('img')
+    // imgBtn.setAttribute('src', '/public/img/plus-svgrepo-com.svg')
 
     likedMovieList()[movie.id] && btn.classList.add('movie-btn__liked') // condicional que aplica cambios si es true  -similar a esto-  if(likedMovieList()[movie.id])btn.classList.add('movie-btn__liked')
     // let arrayLikeMovies = Object.keys(likedMovieList())
@@ -62,12 +53,37 @@ async function generateMovie(
     //   if(movieFavorite == movie.id){
     //     btn.classList.add('movie-btn__liked')
     //   }
-    // })
+
+    imageBtn()
+    function imageBtn(){
+      console.log(btn.classList.contains('movie-btn__liked'), "a")
+      if(!btn.classList.contains('movie-btn__liked')){
+        console.log('in')
+        imgBtn.setAttribute('src', 'https://riszart.github.io/riszmovie-page/public/img/plus-svgrepo-com.svg')
+      }else {
+        console.log('out')
+        imgBtn.setAttribute('src', `https://riszart.github.io/riszmovie-page/public/img/favorite-svgrepo-com.svg`)
+      }
+      btn.classList.toggle('movie-btn__liked')
+    }
+    btn.addEventListener('click', (event)=>{
+      imageBtn()
+      // let selectElement = containeMovieTrends.querySelector(`[data-select="${movie.id}"] button .movie-btn__liked`)
+      // if(selectElement ){
+      //   selectElement.classList.toggle('movie-btn__liked')
+      // }else{
+      //   btn.classList.toggle('movie-btn__liked')
+      // }
+      gettrendingPreview() 
+      addfavorite(movie)
+      getMoviesFavorite() 
+    })
+    btn.appendChild(imgBtn)
     article.append(btn,img)
     container.appendChild(article)
 
     if(lazyLoad)lazyLoader.observe(img)
-    })
+  })
 }
 
 function categoryMovie(data, cotaniner){
@@ -115,7 +131,6 @@ async function getCategories(){
   })
     .then((response)=>{
       const dataAxios = response.data.genres
-      console.log(response)
       categoryMovie(dataAxios, generateCategory)
     })
     .catch(error=>{
@@ -212,7 +227,7 @@ function scrollMove({id = "",query = "",container,apiUrl}){
       clientHeight
     } = document.documentElement
     // const pageNotMax = page < maxPage
-    const scrollBotton = (scrollTop + clientHeight) >= (scrollHeight - 50)
+    const scrollBotton = (scrollTop + clientHeight) >= (scrollHeight - 100)
     if(scrollBotton ){
       count++
       api.get(`${apiUrl}`,{params: {page: count, query: query, with_genres:id,language:"es-ES"}})
@@ -334,5 +349,3 @@ function getMoviesFavorite(){
   // console.log(arrayLikeMovies)
   generateMovie(arrayLikeMovies,containerFavoriteList,{clean:true,lazyLoad:false})
 }
-
-

@@ -144,10 +144,18 @@ function movieDetailPage(){
   getVideoMovie(movieid,decodeURIComponent(moviename))
   getCreditsMovie(movieid)
   buttomSeeMoreCredits.onclick = ()=>{
-    getCreditsMovie(movieid, true)
+    if(!buttomSeeMoreCredits.classList.contains('clicked-btn')){
+      buttomSeeMoreCredits.classList.add('clicked-btn')
+      getCreditsMovie(movieid,true)
+      titleCredits.querySelector('.clicked-btn').innerText = butonChangeNone
+    }else {
+      titleCredits.querySelector('.clicked-btn').innerText = butonChangeMore
+      buttomSeeMoreCredits.classList.remove('clicked-btn')
+      getCreditsMovie(movieid,false)
+    }
   }
 }
-
+let valid
 function searchPage(){
   console.log('search')
   contentArrowImg.classList.remove('inactive')

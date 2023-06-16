@@ -64,18 +64,23 @@ const conatinerTrendsTitleH2 = select('.conatiner-trends__title h2')
 const containerCategoriesH2 = select('.container-categories h2')
 
 //detail
+
 const containerListMovieSelectH3 = select('.container-list-movie-select h3')
 const movieVideoPlay = select('.movie-video_play')
 const movieVideo = select('.movie-video')
 const movieContainer = select('.credits-container')
 const buttomSeeMoreCredits = select('.buttom-see-more-credits')
 const titleCreditsH3 = select('.title-credits h3')
+const titleCredits = select('.title-credits')
 const categorySelectContainerH3 = select('.category-select_container h3')
 
 //favorite
+
 const containerFavoriteList = select('.container-favorite__list')
 const containerFavorite = select('.container-favorite')
 const containerFavoriteH2 = select('.container-favorite h2')
+const movieBtn = select('.movie-btn')
+const movieItem =select('.movie')
 
 //flag
 
@@ -96,3 +101,7 @@ const checkAsk = select('.check-ask')
 const askAdultQuestion = select('.ask-adult_question')
 const labelSi =select('.label-si')
 const labelNo =select('.label-no')
+
+// credits
+
+const clickedBtn = select('.clicked-btn')

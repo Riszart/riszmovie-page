@@ -1,5 +1,7 @@
 let lang
 let API_KEY
+let butonChangeMore
+let butonChangeNone
 function language(){
   if(localStorage.getItem('lang')){
     lang = localStorage.getItem('lang')
@@ -56,8 +58,10 @@ function changeLang(){
     contentFooterP.innerText = 'developed by riszart daryl'
     askAdultQuestion.innerText = 'You are of legal age (+18)'
     labelSi.innerText = 'I am'
-    labelNo.innerText = 'I am not'
+    labelNo.innerText = 'I am not' 
     checkAsk.innerText = 'confirm'
+    butonChangeNone = 'See Less'
+    butonChangeMore = 'see more'
     styleButton.forEach(element => {
       element.innerText = 'see more'
     });
@@ -78,6 +82,8 @@ function changeLang(){
     labelSi.innerText = 'Sí soy'
     labelNo.innerText = 'No soy'
     checkAsk.innerText = 'confirmar'
+    butonChangeNone = 'ver menos'
+    butonChangeMore = 'ver más'
     styleButton.forEach(element => {
       element.innerText = 'ver más'
     });
