@@ -4,8 +4,15 @@
   "description": "consumo de API-REST",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack --mode production",
+    "start": "webpack --mode development"
   },
   "author": "riszart daryl",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "html-loader": "^4.2.0",
+    "html-webpack-plugin": "^5.5.3",
+    "webpack": "^5.88.1",
+    "webpack-cli": "^5.1.4"
+  }
 }
