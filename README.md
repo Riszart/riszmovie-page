@@ -21,5 +21,3 @@ npm install dotenv-webpack -D           --> tratar con informacion sencible que 
 npm install terser-webpack-plugin -D    --> solo produccion se encargara de otmizar el codigo js
 npm install clean-webpack-plugin -D     --> solo produccion se encargar de linpiar el archivo dist
 npm install css-minimizer-webpack-plugin -D     --> solo produccion para obtimisar los css
-
-change all
