@@ -1,107 +1,118 @@
-const select = (clas) => document.querySelector(clas)
+export const select = (clas) => document.querySelector(clas)
 
-const styleButton = document.querySelectorAll('.style-button')
-const boyContent = document.querySelector('body')
+// const titleCategorySearch = select('.title-category_search')
+
+// const point = select('.point')
+// const buttonSeeMoreTrends = select('.movie-trends_button')
+// const buttonSeeMoreSearch = select('.category-search_button')
+// const categoryButton = select('.category_button')
+// const contentInicio = select('.img-inicio')
+
+export const nodeHash = {
+  
+  containerCategories: select('.container-categories'),
+  mainMovie: select('main'),
+  containerFooter: select('.content-footer'),
+  trends: select('.trends'),
+  conatinerImagePerfil: select('.conatiner-image-perfil'),
+  movieVideoPlay: select('.movie-video_play'),
+  title: select('.container-title'),
+  containerLang: select('.container-lang'),
+  containerSearchMovie: select('.container-search'),
+  containerMovieSelect: select('.container-movie-select'),
+  categorySearch: select('.category-search'),
+  listMovieSearch: select('.list-movie-search'),
+  containerTrends: select('.container-trends'),
+  containerFavorite: select('.container-favorite'),
+  containerSearch: select('.up-container_search'),
+  header:select('.header'),
+  contentArrowImg:select('.content-arrow__img'),
+}
+export const nodes={
+  titleCredits: select('.title-credits'),
+  listMovieSelect: select('.list-movie'),
+  categorySelect: select('.category-select'),
+  startLoad: select('.start-load'),
+  loadDescription: select('.description-load'),
+  moviedescription: select('.movie-description'),
+  titleLoad: select('.title-load'),
+  movieTitle: select('.movie-title'),
+  generateCategory: select('.generate-category'),
+  containerFavoriteList: select('.container-favorite__list'),
+  containeMovieTrends: select('.container-movies__trends'),
+
+  movieSearchString: select('.movie-search_string'),
+  trendsMovieSearch: select('.trends-movies-search'),
+  buttonSearch:select('.search-button'),
+  
+  trendsButton: select('.container-trends_button'),
+  containerMovieSearch:select('.container-movies-search'),
+  imageSelect:select('.image-select'),
+
+  containerSubtitle: select('.container-subtitle'),
+  conatinerTrendsTitleH2: select('.conatiner-trends__title h2'),
+  containerFavoriteH2: select('.container-favorite h2'),
+  containerListMovieSelectDesktop: select('.container-list-movie-select_desktop'),
+  containerCategoriesH2: select('.container-categories h2'),
+  titleCreditsH3:select('.title-credits h3'),
+  styleButton: document.querySelectorAll('.style-button'),
+  inputSearch: select('.search-string'),
+  containerListMovieSelectH3: select('.container-list-movie-select h3'),
+  categorySelectContainerH3: select('.category-select_container h3'),
+  contentFooterA: select('.content-footer a'),
+  contentFooterP: select('.content-footer p'),
+  checkAsk: select('.check-ask'),
+  askAdultQuestion: select('.ask-adult_question'),
+  labelSi: select('.label-si'),
+  labelNo: select('.label-no'),
+  boyContent: document.querySelector('body'),
+  askSdult:select('.ask-adult'),
+  movieContainer: select('.credits-container'),
+}
+
+export const btn = {
+  buttomSeeMoreCredits:select('.buttom-see-more-credits')
+}
+
+export const containerListMovieSelectDesktop = select('.container-list-movie-select_desktop')
+
+// // header
+
+// const arrowBotton = select('.content-arrow')
+
+// //search
 
 
-const containerTrends = select('.container-trends')
-const containerCategories = select('.container-categories')
-const categorySearch = select('.category-search')
-const containerMovieSelect = select('.container-movie-select')
-const listMovieSearch = select('.list-movie-search')
+// // trends
 
-const containerFooter = select('.content-footer')
-const title = select('.container-title')
+// // category
 
-const buttonSearch = select('.search-button')
-const trendsButton = select('.container-trends_button')
-const containeMovieTrends = select('.container-movies__trends')
-const generateCategory = select('.generate-category')
-const trends = select('.trends')
-const containerMovieSearch = select('.container-movies-search')
-const titleCategorySearch = select('.title-category_search')
-const inputSearch = select('.search-string')
-const movieSearchString = select('.movie-search_string')
-const trendsMovieSearch = select('.trends-movies-search')
-const movieTitle = select('.movie-title')
+// const containerCategoriesH2 = select('.container-categories h2')
 
-const moviedescription = select('.movie-description')
-const loadDescription = select('.description-load')
-const titleLoad = select('.title-load')
-const startLoad = select('.start-load')
+// //detail
 
-const point = select('.point')
-const imageSelect = select('.image-select')
-const categorySelect = select('.category-select')
-const listMovieSelect = select('.list-movie')
-const buttonSeeMoreTrends = select('.movie-trends_button')
-const buttonSeeMoreSearch = select('.category-search_button')
-const categoryButton = select('.category_button')
-const contentInicio = select('.img-inicio')
-const containerSubtitle = select('.container-subtitle')
+// const movieVideo = select('.movie-video')
+// 
 
-const mainMovie = select('main')
-const containerListMovieSelectDesktop = select('.container-list-movie-select_desktop')
+// //favorite
 
-// header
+// const movieBtn = select('.movie-btn')
+// const movieItem =select('.movie')
 
-const conatinerImagePerfil = select('.conatiner-image-perfil')
-const contentArrowImg = select('.content-arrow__img')
-const header = select('.header')
-const arrowBotton = select('.content-arrow')
+// //flag
 
-//search
+export const flagEs = select('.es-es')
+export const flagEn = select('.en-us')
 
-const containerSearchMovie = select('.container-search')
-const containerSearch = select('.up-container_search')
+// //footer 
 
-// trends
 
-const conatinerTrendsTitleH2 = select('.conatiner-trends__title h2')
 
-// category
+// // input
+export const siAdult = select('#si')
+export const noAdult = select('#no')
 
-const containerCategoriesH2 = select('.container-categories h2')
 
-//detail
+// // credits                                                                                                      
 
-const containerListMovieSelectH3 = select('.container-list-movie-select h3')
-const movieVideoPlay = select('.movie-video_play')
-const movieVideo = select('.movie-video')
-const movieContainer = select('.credits-container')
-const buttomSeeMoreCredits = select('.buttom-see-more-credits')
-const titleCreditsH3 = select('.title-credits h3')
-const titleCredits = select('.title-credits')
-const categorySelectContainerH3 = select('.category-select_container h3')
-
-//favorite
-
-const containerFavoriteList = select('.container-favorite__list')
-const containerFavorite = select('.container-favorite')
-const containerFavoriteH2 = select('.container-favorite h2')
-const movieBtn = select('.movie-btn')
-const movieItem =select('.movie')
-
-//flag
-
-const containerLang = select('.container-lang')
-const flagEs = select('.es-es')
-const flagEn = select('.en-us')
-
-//footer 
-
-const contentFooterA = select('.content-footer a')
-const contentFooterP = select('.content-footer p')
-
-// input
-const siAdult = select('#si')
-const noAdult = select('#no')
-const askSdult = select('.ask-adult')
-const checkAsk = select('.check-ask')
-const askAdultQuestion = select('.ask-adult_question')
-const labelSi =select('.label-si')
-const labelNo =select('.label-no')
-
-// credits
-
-const clickedBtn = select('.clicked-btn')
+// const clickedBtn = select('.clicked-btn')

@@ -1,17 +1,27 @@
-let lang
-let API_KEY
-let butonChangeMore
-let butonChangeNone
-function language(){
-  console.log('lang')
+import {select,nodes,flagEs,flagEn,siAdult,noAdult} from './nodes'
+export let butonChangeMore
+export let butonChangeNone
+
+export function language(){
+  let lang
+  const flagEs = select('.es-es')
+  const flagEn = select('.en-us')
+  flagEn.addEventListener('click',()=>{
+    localStorage.setItem('lang','en-US')
+    language()
+    location.reload()
+  })
+  flagEs.addEventListener('click',()=>{
+    localStorage.setItem('lang','es-ES')
+    language()
+    location.reload()
+  })
   if(localStorage.getItem('lang')){
-    console.log('local')
     lang = localStorage.getItem('lang')
     changeDisplayLang(lang)
     return
   }
   if(window.navigator.language){
-    console.log('web')
     localStorage.setItem('lang', window.navigator.language)
     lang = window.navigator.language
     changeDisplayLang(lang)
@@ -21,11 +31,9 @@ function language(){
   localStorage.setItem('lang', lang)
   changeDisplayLang(lang)
 }
-language()
 
-
-function changeDisplayLang(){
-  changeLang()
+export function changeDisplayLang(lang){
+  changeLang(lang)
   if(lang == 'es-ES' || lang == 'es-US'){
     flagEs.classList.add('color-clicked')
     flagEn.classList.remove('color-clicked')
@@ -35,73 +43,59 @@ function changeDisplayLang(){
   }
 }
 
-flagEn.addEventListener('click',()=>{
-  localStorage.setItem('lang','en-US')
-  language()
-  location.reload()
-})
-flagEs.addEventListener('click',()=>{
-  localStorage.setItem('lang','es-ES')
-  language()
-  location.reload()
-})
-
-function changeLang(){
-  console.log(lang)
+export function changeLang(lang){
   if(lang == 'en-US'){
-    // console.log(lang)
-    containerSubtitle.innerText = 'Millions of movies to discover. Be encouraged and know the trends, the premieres and more'
-    conatinerTrendsTitleH2.innerText = 'trends'
-    containerCategoriesH2.innerText = 'category'
-    containerFavoriteH2.innerText = 'favorite movies'
-    titleCreditsH3.innerText = 'credits'
-    categorySelectContainerH3.innerText = 'Related Categories'
-    containerListMovieSelectH3.innerText = 'Similar Movies'
-    inputSearch.placeholder = 'Search'
-    contentFooterA.innerText = '<< - my portfolio - >>'
-    contentFooterP.innerText = 'developed by riszart daryl'
-    askAdultQuestion.innerText = 'You are of legal age (+18)'
-    labelSi.innerText = 'I am'
-    labelNo.innerText = 'I am not' 
-    checkAsk.innerText = 'confirm'
+    nodes.containerSubtitle.innerText = 'Millions of movies to discover. Be encouraged and know the trends, the premieres and more'
+    nodes.conatinerTrendsTitleH2.innerText = 'trends'
+    nodes.containerCategoriesH2.innerText = 'category'
+    nodes.containerFavoriteH2.innerText = 'favorite movies'
+    nodes.titleCreditsH3.innerText = 'credits'
+    nodes.categorySelectContainerH3.innerText = 'Related Categories'
+    nodes.containerListMovieSelectH3.innerText = 'Similar Movies'
+    nodes.inputSearch.placeholder = 'Search'
+    nodes.contentFooterA.innerText = '<< - my portfolio - >>'
+    nodes.contentFooterP.innerText = 'developed by riszart daryl'
+    nodes.askAdultQuestion.innerText = 'You are of legal age (+18)'
+    nodes.labelSi.innerText = 'I am'
+    nodes.labelNo.innerText = 'I am not' 
+    nodes.checkAsk.innerText = 'confirm'
     butonChangeNone = 'See Less'
     butonChangeMore = 'see more'
-    styleButton.forEach(element => {
+    nodes.styleButton.forEach(element => {
       element.innerText = 'see more'
     });
   }
-  if(lang == "es-ES" || lang == 'es-US'){
-    // console.log(lang)
-    containerSubtitle.innerText = 'Millones de películas para descubrir. Anímate y conoce las tendencias, los estrenos y más'
-    conatinerTrendsTitleH2.innerText = 'tendencias'
-    containerCategoriesH2.innerText = 'categoria'
-    containerFavoriteH2.innerText = 'películas  favoritas'
-    titleCreditsH3.innerText = 'Créditos'
-    categorySelectContainerH3.innerText = 'Categorías Relacionados'
-    containerListMovieSelectH3.innerText = 'Películas Similares'
-    inputSearch.placeholder = 'Buscar'
-    contentFooterA.innerText = '<< - mi portafolio - >>'
-    contentFooterP.innerText = 'desarrollado por riszart daryl'
-    askAdultQuestion.innerText = 'Eres mayor de Edad (+18)'
-    labelSi.innerText = 'Sí soy'
-    labelNo.innerText = 'No soy'
-    checkAsk.innerText = 'confirmar'
+  if(lang == "es-ES" || lang == 'es-US' || lang == 'es-MX'){
+    nodes.containerSubtitle.innerText = 'Millones de películas para descubrir. Anímate y conoce las tendencias, los estrenos y más'
+    nodes.conatinerTrendsTitleH2.innerText = 'tendencias'
+    nodes.containerCategoriesH2.innerText = 'categoria'
+    nodes.containerFavoriteH2.innerText = 'películas  favoritas'
+    nodes.titleCreditsH3.innerText = 'Créditos'
+    nodes.categorySelectContainerH3.innerText = 'Categorías Relacionados'
+    nodes.containerListMovieSelectH3.innerText = 'Películas Similares'
+    nodes.inputSearch.placeholder = 'Buscar'
+    nodes.contentFooterA.innerText = '<< - mi portafolio - >>'
+    nodes.contentFooterP.innerText = 'desarrollado por riszart daryl'
+    nodes.askAdultQuestion.innerText = 'Eres mayor de Edad (+18)'
+    nodes.labelSi.innerText = 'Sí soy'
+    nodes.labelNo.innerText = 'No soy'
+    nodes.checkAsk.innerText = 'confirmar'
     butonChangeNone = 'ver menos'
     butonChangeMore = 'ver más'
-    styleButton.forEach(element => {
+    nodes.styleButton.forEach(element => {
       element.innerText = 'ver más'
     });
   }
 }
 
-let adult
-function ifAdult(){
+export function ifAdult(){
+  let adult
   if(localStorage.getItem('adult')){
     adult = localStorage.getItem('adult')
-    askSdult.style.display = 'none'
+    nodes.askSdult.style.display = 'none'
   }else{
-    boyContent.style.overflow = 'hidden'
-    checkAsk.addEventListener('click', ()=>{
+    nodes.boyContent.style.overflow = 'hidden'
+    nodes.checkAsk.addEventListener('click', ()=>{
       if(siAdult.checked){
         adult = true
       }else if(noAdult.checked){
@@ -111,8 +105,4 @@ function ifAdult(){
       location.reload()
     })
   }
-}
-ifAdult()
-if(localStorage.getItem('adult')){
-  API_KEY = 'd7ea524a59ef60701f4883af10e17628'
 }
