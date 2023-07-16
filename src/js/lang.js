@@ -22,10 +22,14 @@ export function language(){
     return
   }
   if(window.navigator.language){
-    localStorage.setItem('lang', window.navigator.language)
     lang = window.navigator.language
-    changeDisplayLang(lang)
-    return
+    if(localStorage.getItem('lang') == "es-ES" || localStorage.getItem('lang') == "es-US" ){
+      localStorage.setItem('lang', lang)
+      changeDisplayLang(lang)
+      return
+    }
+    localStorage.setItem('lang', 'es-US')
+    changeDisplayLang('es-US')
   }
   lang = 'en-US'
   localStorage.setItem('lang', lang)
@@ -65,7 +69,7 @@ export function changeLang(lang){
       element.innerText = 'see more'
     });
   }
-  if(lang == "es-ES" || lang == 'es-US' || lang == 'es-MX'){
+  if(lang == "es-ES" || lang == 'es-US'){
     nodes.containerSubtitle.innerText = 'Millones de películas para descubrir. Anímate y conoce las tendencias, los estrenos y más'
     nodes.conatinerTrendsTitleH2.innerText = 'tendencias'
     nodes.containerCategoriesH2.innerText = 'categoria'
