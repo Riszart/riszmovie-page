@@ -1,6 +1,11 @@
 import {API_KEY} from './secrets'
 import {nodes,nodeHash,btn} from './nodes'
 import axios from 'axios'
+import favoriteImg from '../img/plus-svgrepo-com.svg'
+import checkFavoriteImg from '../img/favorite-svgrepo-com.svg'
+import errorImgMovie from '../img/no-disponible.jpg'
+import errorImgUser from '../img/user-undefined.svg'
+
 
 
 const api = axios.create({
@@ -39,7 +44,7 @@ export async function generateMovie(
       location.hash = `#movie=${movie.id}-${movie.title}`
     })
     img.addEventListener('error',()=>{
-      img.setAttribute('src', `https://riszart.github.io/riszmovie-page/public/img/no-disponible.jpg`)
+      img.setAttribute('src', `${errorImgMovie}`)
       img.setAttribute('alt', `imagen de -(- ${movie.title} -)- NO DISPONIBLE`)
     })
     const btn = document.createElement('button')
@@ -50,9 +55,9 @@ export async function generateMovie(
     imageBtn()
     function imageBtn(){
       if(!btn.classList.contains('movie-btn__liked')){
-        imgBtn.setAttribute('src', 'https://riszart.github.io/riszmovie-page/public/img/plus-svgrepo-com.svg')
+        imgBtn.setAttribute('src', `${favoriteImg}`)
       }else {
-        imgBtn.setAttribute('src', `https://riszart.github.io/riszmovie-page/public/img/favorite-svgrepo-com.svg`)
+        imgBtn.setAttribute('src', `${checkFavoriteImg}`)
       }
       btn.classList.toggle('movie-btn__liked')
     }
@@ -167,7 +172,7 @@ export async function getMovieById(movie_id){
       nodes.imageSelect.classList.remove('error')
       nodes.imageSelect.addEventListener('error',()=>{
         nodes.imageSelect.classList.add('error')
-        nodes.imageSelect.setAttribute('src', `https://riszart.github.io/riszmovie-page/public/img/no-disponible.jpg`)
+        nodes.imageSelect.setAttribute('src', `${errorImgMovie}`)
       })
       categoryMovie(movie.data.genres,nodes.categorySelect)
       getRelateMovieId(movie_id)
@@ -202,7 +207,7 @@ const lazyLoader = new IntersectionObserver((entries)=>{
     }
   })
 })
-
+let count = 1
 export function scrollMove({id = "",query = "",container,apiUrl}){
   return ()=>{
     const {
@@ -210,10 +215,10 @@ export function scrollMove({id = "",query = "",container,apiUrl}){
       scrollHeight,
       clientHeight
     } = document.documentElement
-    let count = 1
     // const pageNotMax = page < maxPage
     const scrollBotton = (scrollTop + clientHeight) >= (scrollHeight - 100)
     if(scrollBotton ){
+    console.log(count,'fdsfsdfsd')
       count++
       api.get(`${apiUrl}`,{params: {page: count, query: query, with_genres:id,language:"es-ES"}})
       .then((response)=>{
@@ -291,7 +296,7 @@ export async function getCreditsMovie(movie_id, block=false){
         const img = document.createElement('img')
         img.setAttribute('src', `https://image.tmdb.org/t/p/w500/${credit.profile_path}`)
         img.addEventListener('error',()=>{
-          img.setAttribute('src', `https://riszart.github.io/riszmovie-page/public/img/user-undefined.svg`)
+          img.setAttribute('src', `${errorImgUser}`)
         })
         img.setAttribute('alt', credit.original_name)
         const div = document.createElement('div')

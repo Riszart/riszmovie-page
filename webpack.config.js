@@ -12,7 +12,7 @@ module.exports = {
   },
   output:{
     path:path.resolve(__dirname, 'dist'),
-    filename:'[name].js'
+    filename:'assets/[name].js'
   },
   mode:'production',
   resolve: {
@@ -21,31 +21,40 @@ module.exports = {
   module:{
     rules:[
       {
-        test:/\.html$/,
-        use:['html-loader']
-      },
-      {
-        test:/\.js$/,
+        test:/\.m?js$/,
         exclude:/node-module|\.vscode/,
         use:{
           loader:'babel-loader'
         }
       },
       {
+        test:/\.html$/,
+        use:['html-loader']
+      },
+      {
         test:/\.css$/,
         use:[MiniCssExtractPlugin.loader, 'css-loader'],
-      }
+      },
+      {
+        test:/\.(svg|png|jpg|webp)/,
+        type:'asset/resource',
+        generator:{
+          filename:'assets/images/[name][ext]'
+        }
+      },
     ]
   },
   plugins:[
     new HtmlWebpackPlugin({
+      inject:true,
       template:'./src/index.html',
+      filename:'./index.html'
     }),
     new MiniCssExtractPlugin({
-      filename: '[name].css',
+      filename: 'assets/[name].css',
     }),
     new CleanWebpackPlugin(),
-    new Dotenv()
+    new Dotenv(),
   ],
   optimization:{
     minimize:true,

@@ -30,12 +30,24 @@ module.exports = {
       {
         test:/\.css$/,
         use:['style-loader', 'css-loader'],
-      }
+        generator:{
+          filename:'assets/[name][ext]'
+        }
+      },
+      {
+        test:/\.(svg|png|jpg|webp)/,
+        type:'asset/resource',
+        generator:{
+          filename:'assets/images/[name][ext]'
+        }
+      },
     ]
   },
   plugins:[
     new HtmlWebpackPlugin({
+      inject:true,
       template:'./src/index.html',
+      filename:'./index.html'
     }),
     new Dotenv()
   ],
@@ -45,5 +57,4 @@ module.exports = {
     historyApiFallback:true,
     port:3005,
   },
-  stats:'verbose'
 }
