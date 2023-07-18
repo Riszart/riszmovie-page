@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "dev": "webpack --config webpack.config.dev.js",
-    "server": "webpack server --config webpack.config.dev.js"
+    "server": "webpack server --config webpack.config.dev.js",
+    "deploy":"gh-pages -d dist"
   },
   "author": "riszart daryl",
   "license": "MIT",
