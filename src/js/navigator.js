@@ -29,6 +29,9 @@ export function navigator(){
 function homePage(){
   // console.log('home')
   nodeHash.conatinerImagePerfil.classList.remove('inactive')
+  nodeHash.conatinerSearch.classList.remove('inactive')
+  
+  nodeHash.imagenBackInit.classList.remove('inactive')
   nodeHash.movieVideoPlay.innerHTML = ""
   nodeHash.title.innerText = 'riszmovie!...'
   nodeHash.containerLang.classList.remove('inactive')
@@ -59,6 +62,8 @@ function categoriesPage(){
   nodeHash.movieVideoPlay.innerHTML = ""
   nodeHash.contentArrowImg.classList.remove('inactive')
   nodeHash.conatinerImagePerfil.classList.add('inactive')
+  nodeHash.conatinerSearch.classList.add('inactive')
+  nodeHash.imagenBackInit.classList.add('inactive')
 
 
   // console.log('categories')
@@ -99,6 +104,8 @@ function movieDetailPage(){
   nodeHash.contentArrowImg.classList.remove('inactive')
   nodeHash.containerLang.classList.add('inactive')
   nodeHash.conatinerImagePerfil.classList.add('inactive')
+  nodeHash.conatinerSearch.classList.add('inactive')
+  nodeHash.imagenBackInit.classList.add('inactive')
 
   nodeHash.containerSearch.classList.add('inactive')
   nodeHash.containerTrends.classList.add('inactive')
@@ -142,6 +149,8 @@ function searchPage(){
   nodeHash.containerSearchMovie.classList.add('showSearch')
   nodeHash.containerLang.classList.add('inactive')
   nodeHash.conatinerImagePerfil.classList.add('inactive')
+  nodeHash.conatinerSearch.classList.add('inactive')
+  nodeHash.imagenBackInit.classList.add('inactive')
 
   nodes.containerSubtitle.classList.add('inactive')
   nodeHash.header.classList.remove('inactive')
@@ -176,6 +185,8 @@ function searchPage(){
 function trendsPage(){
   // console.log('trends')
   nodeHash.conatinerImagePerfil.classList.add('inactive')
+  nodeHash.conatinerSearch.classList.add('inactive')
+  nodeHash.imagenBackInit.classList.add('inactive')
   nodeHash.contentArrowImg.classList.remove('inactive')
   nodeHash.title.innerText = 'tendencia'
   nodeHash.containerSearch.classList.add('inactive')

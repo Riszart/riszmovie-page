@@ -50,8 +50,9 @@ export function changeDisplayLang(lang){
 export function changeLang(lang){
   if(lang == 'en-US'){
     nodes.containerSubtitle.innerText = 'Millions of movies to discover. Be encouraged and know the trends, the premieres and more'
+    nodes.containerLema.innerText = 'Movies for everyone'
     nodes.conatinerTrendsTitleH2.innerText = 'trends'
-    nodes.containerCategoriesH2.innerText = 'category'
+    nodes.containerCategoriesH2.innerText = 'category' 
     nodes.containerFavoriteH2.innerText = 'favorite movies'
     nodes.titleCreditsH3.innerText = 'credits'
     nodes.categorySelectContainerH3.innerText = 'Related Categories'
@@ -71,6 +72,7 @@ export function changeLang(lang){
   }
   if(lang == "es-ES" || lang == 'es-US'){
     nodes.containerSubtitle.innerText = 'Millones de películas para descubrir. Anímate y conoce las tendencias, los estrenos y más'
+    nodes.containerLema.innerText = 'Peliculas para todos'
     nodes.conatinerTrendsTitleH2.innerText = 'tendencias'
     nodes.containerCategoriesH2.innerText = 'categoria'
     nodes.containerFavoriteH2.innerText = 'películas  favoritas'

@@ -15,6 +15,8 @@ export const nodeHash = {
   containerFooter: select('.content-footer'),
   trends: select('.trends'),
   conatinerImagePerfil: select('.conatiner-image-perfil'),
+  conatinerSearch: select('.container-search'),
+  imagenBackInit: select('.imagen-back__init'),
   movieVideoPlay: select('.movie-video_play'),
   title: select('.container-title'),
   containerLang: select('.container-lang'),
@@ -49,6 +51,7 @@ export const nodes={
   containerMovieSearch:select('.container-movies-search'),
   imageSelect:select('.image-select'),
 
+  containerLema: select('.container-lema'),
   containerSubtitle: select('.container-subtitle'),
   conatinerTrendsTitleH2: select('.conatiner-trends__title h2'),
   containerFavoriteH2: select('.container-favorite h2'),

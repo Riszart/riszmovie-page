@@ -4,30 +4,30 @@ import {language,ifAdult} from './lang'
 import {nodes, nodeHash} from './nodes'
 import {navigator,scrollInfinity} from './navigator'
 
-const canvas = document.querySelector(".header-bottom")
-const ctx = canvas.getContext('2d')
-canvas.width = window.innerWidth
-canvas.height = 40
+// const canvas = document.querySelector(".header-bottom")
+// const ctx = canvas.getContext('2d')
+// canvas.width = window.innerWidth
+// canvas.height = 40
 
-ctx.beginPath()
-ctx.strokeStyle = "#2c4b55";
-ctx.fillStyle="#2c4b55";
-ctx.lineWidth = .1;
-ctx.moveTo(40,0)
-ctx.lineTo(0,0)
-ctx.lineTo(0,40)
-ctx.arc(40,40,40,(Math.PI / 180)*180,(Math.PI / 180)*-90,false)
-ctx.fill()
-ctx.stroke();
+// ctx.beginPath()
+// ctx.strokeStyle = "#2c4b55";
+// ctx.fillStyle="#2c4b55";
+// ctx.lineWidth = .1;
+// ctx.moveTo(40,0)
+// ctx.lineTo(0,0)
+// ctx.lineTo(0,40)
+// ctx.arc(40,40,40,(Math.PI / 180)*180,(Math.PI / 180)*-90,false)
+// ctx.fill()
+// ctx.stroke();
 
-ctx.translate(canvas.width - 40, 0);
-ctx.beginPath()
-ctx.moveTo(0,0)
-ctx.lineTo(40, 0)
-ctx.lineTo(40, 40)
-ctx.arc(0,40,40,0,(Math.PI / 180)*-90,true)
-ctx.fill()
-ctx.stroke();
+// ctx.translate(canvas.width - 40, 0);
+// ctx.beginPath()
+// ctx.moveTo(0,0)
+// ctx.lineTo(40, 0)
+// ctx.lineTo(40, 40)
+// ctx.arc(0,40,40,0,(Math.PI / 180)*-90,true)
+// ctx.fill()
+// ctx.stroke();
 
 language()
 ifAdult()
